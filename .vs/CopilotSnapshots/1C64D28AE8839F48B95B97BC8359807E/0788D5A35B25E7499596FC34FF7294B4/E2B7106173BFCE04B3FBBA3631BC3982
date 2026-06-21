@@ -1,0 +1,64 @@
+﻿@page "/photo-gallery"
+@namespace MACDEF.Client.Pages
+
+<div class="bg-gradient-to-r from-[#8B4513] to-[#D2691E] text-white py-16">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+        <h1 class="text-4xl font-bold mb-4">Photo Gallery</h1>
+        <p class="text-lg text-gray-100">Moments from our community</p>
+    </div>
+</div>
+
+<main class="max-w-6xl mx-auto py-16 px-6">
+    <div class="mb-12">
+        <p class="text-lg text-gray-700 text-center">
+            Explore our collection of photos showcasing Ma'di cultural events, celebrations, and community gatherings.
+        </p>
+    </div>
+
+    <!-- Gallery Grid -->
+    <div class="grid md:grid-cols-3 gap-6">
+        @foreach (var photo in galleryPhotos)
+        {
+            <div class="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition">
+                <img src="@photo.ImageUrl" alt="@photo.Title" class="w-full h-64 object-cover group-hover:scale-110 transition duration-300" />
+                <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition flex items-end p-4">
+                    <div class="text-white transform translate-y-full group-hover:translate-y-0 transition">
+                        <h3 class="font-bold text-lg">@photo.Title</h3>
+                        <p class="text-sm">@photo.Description</p>
+                        <p class="text-xs mt-1">@photo.Date</p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <!-- Load More Button -->
+    <div class="text-center mt-12">
+        <button class="bg-[#8B4513] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#A0522D] transition">
+            Load More Photos
+        </button>
+    </div>
+</main>
+
+@code {
+    private List<GalleryPhoto> galleryPhotos = new()
+    {
+        new() { Title = "Cultural Festival", Description = "Annual celebration of Ma'di traditions", ImageUrl = "gallery-1.jpg", Date = "June 2024" },
+        new() { Title = "Traditional Music", Description = "Live performance showcase", ImageUrl = "gallery-2.jpg", Date = "May 2024" },
+        new() { Title = "Community Gathering", Description = "Families celebrating together", ImageUrl = "gallery-3.jpg", Date = "April 2024" },
+        new() { Title = "Youth Programs", Description = "Young leaders in action", ImageUrl = "gallery-4.jpg", Date = "March 2024" },
+        new() { Title = "Ma'di Language Classes", Description = "Learning our heritage language", ImageUrl = "gallery-5.jpg", Date = "February 2024" },
+        new() { Title = "Traditional Arts", Description = "Masterclass in crafts", ImageUrl = "gallery-6.jpg", Date = "January 2024" },
+        new() { Title = "Storytelling Night", Description = "Elders sharing wisdom", ImageUrl = "gallery-7.jpg", Date = "December 2023" },
+        new() { Title = "Food & Culture", Description = "Traditional cuisine celebration", ImageUrl = "gallery-8.jpg", Date = "November 2023" },
+        new() { Title = "Dance Performance", Description = "Contemporary meets tradition", ImageUrl = "gallery-9.jpg", Date = "October 2023" },
+    };
+
+    private class GalleryPhoto
+    {
+        public string Title { get; set; } = "";
+        public string Description { get; set; } = "";
+        public string ImageUrl { get; set; } = "";
+        public string Date { get; set; } = "";
+    }
+}

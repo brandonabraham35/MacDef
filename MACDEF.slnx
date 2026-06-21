@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="MACDEF/MACDEF.Client/MACDEF.Client.csproj" />
+  <Project Path="MACDEF/MACDEF/MACDEF.csproj" />
+</Solution>

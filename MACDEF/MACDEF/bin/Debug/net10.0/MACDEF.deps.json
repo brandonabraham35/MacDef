@@ -1,0 +1,110 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v10.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v10.0": {
+      "MACDEF/1.0.0": {
+        "dependencies": {
+          "MACDEF.Client": "1.0.0",
+          "Microsoft.AspNetCore.Components.WebAssembly.Server": "10.0.6"
+        },
+        "runtime": {
+          "MACDEF.dll": {}
+        }
+      },
+      "Microsoft.AspNetCore.Components.WebAssembly/10.0.6": {
+        "dependencies": {
+          "Microsoft.JSInterop.WebAssembly": "10.0.6"
+        },
+        "runtime": {
+          "lib/net10.0/Microsoft.AspNetCore.Components.WebAssembly.dll": {
+            "assemblyVersion": "10.0.6.0",
+            "fileVersion": "10.0.626.17701"
+          }
+        }
+      },
+      "Microsoft.AspNetCore.Components.WebAssembly.Server/10.0.6": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Components.WebAssembly": "10.0.6"
+        },
+        "runtime": {
+          "lib/net10.0/Microsoft.AspNetCore.Components.WebAssembly.Server.dll": {
+            "assemblyVersion": "10.0.6.0",
+            "fileVersion": "10.0.626.17701"
+          }
+        }
+      },
+      "Microsoft.DotNet.HotReload.WebAssembly.Browser/10.0.203": {
+        "runtime": {
+          "lib/net10.0/Microsoft.DotNet.HotReload.WebAssembly.Browser.dll": {
+            "assemblyVersion": "10.0.203.0",
+            "fileVersion": "10.2.326.22005"
+          }
+        }
+      },
+      "Microsoft.JSInterop.WebAssembly/10.0.6": {
+        "runtime": {
+          "lib/net10.0/Microsoft.JSInterop.WebAssembly.dll": {
+            "assemblyVersion": "10.0.6.0",
+            "fileVersion": "10.0.626.17701"
+          }
+        }
+      },
+      "MACDEF.Client/1.0.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Components.WebAssembly": "10.0.6",
+          "Microsoft.DotNet.HotReload.WebAssembly.Browser": "10.0.203"
+        },
+        "runtime": {
+          "MACDEF.Client.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "MACDEF/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.AspNetCore.Components.WebAssembly/10.0.6": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-eLdaMWy0l2GaKp/IaxS7LZMuKpsCTGMYaTBkZLGdkg4RExzQs4vKBqw5Lm2Z2bF6vc7YZOo3DdDWs2GqAzMb9g==",
+      "path": "microsoft.aspnetcore.components.webassembly/10.0.6",
+      "hashPath": "microsoft.aspnetcore.components.webassembly.10.0.6.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Components.WebAssembly.Server/10.0.6": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-LUaQResAFLTomhILqkT7XfS0jqcItLLNCSdPGV8eeXGUxbrVZ08g8CtIOgzw/x3pfpHU6ZjCFwCkrUozDB5+Xw==",
+      "path": "microsoft.aspnetcore.components.webassembly.server/10.0.6",
+      "hashPath": "microsoft.aspnetcore.components.webassembly.server.10.0.6.nupkg.sha512"
+    },
+    "Microsoft.DotNet.HotReload.WebAssembly.Browser/10.0.203": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-OFnGv+vIMJdTX9U1gTIwOeE3isTt5MSy+hFpRvXceYZ2TBadvxWunKL1FHMBtY/fRXbJTtBKhByybknDQwhwgw==",
+      "path": "microsoft.dotnet.hotreload.webassembly.browser/10.0.203",
+      "hashPath": "microsoft.dotnet.hotreload.webassembly.browser.10.0.203.nupkg.sha512"
+    },
+    "Microsoft.JSInterop.WebAssembly/10.0.6": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-JZkBoGzuXMn7crqod9COqf5Cb+VL7YlHJKo5EutgteGoX87OJf9mlxomykTabuhnm4h5xvZzENPUD4ltDyok6w==",
+      "path": "microsoft.jsinterop.webassembly/10.0.6",
+      "hashPath": "microsoft.jsinterop.webassembly.10.0.6.nupkg.sha512"
+    },
+    "MACDEF.Client/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

@@ -1,0 +1,13 @@
+@namespace MACDEF.Client.Components.Layout
+@inherits LayoutComponentBase
+@inject NavigationManager Navigation
+
+<div class="bg-gray-50 min-h-screen flex flex-col">
+    <NavBar />
+    
+    <main class="flex-grow">
+        @Body
+    </main>
+    
+    <Footer />
+</div>

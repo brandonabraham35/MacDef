@@ -1,0 +1,22 @@
+﻿@namespace MACDEF.Client.Components.Layout
+@inherits LayoutComponentBase
+@inject NavigationManager Navigation
+
+<div class="@(isDarkTheme ? "theme-dark" : "theme-light") bg-gray-50 min-h-screen flex flex-col">
+    <NavBar IsDarkTheme="isDarkTheme" OnThemeToggle="ToggleTheme" />
+    
+    <main class="flex-grow">
+        @Body
+    </main>
+    
+    <Footer />
+</div>
+
+@code {
+    private bool isDarkTheme = true;
+
+    private void ToggleTheme()
+    {
+        isDarkTheme = !isDarkTheme;
+    }
+}

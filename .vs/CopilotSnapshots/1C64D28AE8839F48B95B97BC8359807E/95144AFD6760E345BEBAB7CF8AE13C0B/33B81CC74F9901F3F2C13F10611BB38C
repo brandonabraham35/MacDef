@@ -1,0 +1,246 @@
+﻿@page "/contact"
+@namespace MACDEF.Client.Pages
+@using System.ComponentModel.DataAnnotations
+@using System.Net.Http.Json
+@using System.Net.Http.Headers
+<PageTitle>Contact Us - MACDEF</PageTitle>
+
+<PageTitle>Contact Us - MACDEF</PageTitle>
+
+<div class="bg-gradient-to-r from-[#8B4513] to-[#D2691E] text-white py-16">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+    </div>
+</div>
+    </div>
+</div>
+
+<main class="max-w-4xl mx-auto py-16 px-6">
+        We're here to connect you with our vibrant Ma'di community.
+    </p>
+        We're here to connect you with our vibrant Ma'di community.
+    </p>
+
+        <div class="bg-white p-8 rounded-lg shadow-md">
+            <h2 class="text-2xl font-bold mb-6 text-gray-900">Send us a Message</h2>
+        <div class="bg-white p-8 rounded-lg shadow-md">
+            <h2 class="text-2xl font-bold mb-6 text-gray-900">Send us a Message</h2>
+            <EditForm Model="@contactForm" OnValidSubmit="@HandleSubmit">
+                <div class="mb-4">
+                    <label for="firstName" class="block text-sm font-medium text-gray-700 mb-2">First Name *</label>
+                <div class="mb-4">
+                    <label for="firstName" class="block text-sm font-medium text-gray-700 mb-2">First Name *</label>
+                    <InputText id="firstName" @bind-Value="contactForm.FirstName" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#8B4513] focus:border-transparent" />
+
+                <div class="mb-4">
+
+                <div class="mb-4">
+                    <label for="lastName" class="block text-sm font-medium text-gray-700 mb-2">Last Name *</label>
+                </div>
+
+                </div>
+
+                <div class="mb-4">
+                    <ValidationMessage For="@(() => contactForm.Email)" />
+                </div>
+                    <ValidationMessage For="@(() => contactForm.Email)" />
+                </div>
+
+                    <InputText id="phone" @bind-Value="contactForm.Phone" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#8B4513] focus:border-transparent" />
+                </div>
+                    <InputText id="phone" @bind-Value="contactForm.Phone" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#8B4513] focus:border-transparent" />
+                </div>
+
+                    <InputSelect id="subject" @bind-Value="contactForm.Subject" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#8B4513] focus:border-transparent">
+                        <option value="">Select a subject...</option>
+                    <InputSelect id="subject" @bind-Value="contactForm.Subject" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#8B4513] focus:border-transparent">
+                        <option value="">Select a subject...</option>
+                        <option value="inquiry">General Inquiry</option>
+                        <option value="event">Event Registration</option>
+                        <option value="partnership">Partnership Opportunity</option>
+                        <option value="event">Event Registration</option>
+                        <option value="partnership">Partnership Opportunity</option>
+                        <option value="other">Other</option>
+                </div>
+
+                </div>
+
+                <div class="mb-6">
+                    <ValidationMessage For="@(() => contactForm.Message)" />
+                </div>
+                    <ValidationMessage For="@(() => contactForm.Message)" />
+                </div>
+
+                    <div class="mb-4 p-4 rounded-lg whitespace-pre-wrap @(isSuccess ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800")">
+                        @submitMessage
+                    <div class="mb-4 p-4 rounded-lg whitespace-pre-wrap @(isSuccess ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800")">
+                        @submitMessage
+                    </div>
+                <button type="submit" class="w-full bg-[#8B4513] text-white font-semibold py-3 rounded-lg hover:bg-[#A0522D] transition" disabled="@isSubmitting">
+                    @(isSubmitting ? "Sending..." : "Send Message")
+                <button type="submit" class="w-full bg-[#8B4513] text-white font-semibold py-3 rounded-lg hover:bg-[#A0522D] transition" disabled="@isSubmitting">
+                    @(isSubmitting ? "Sending..." : "Send Message")
+                </button>
+            <div class="mt-4 text-sm text-gray-600">
+                Prefer email? <a href="mailto:macdef2013@gmail.com?subject=MACDEF%20Website%20Inquiry" class="font-semibold text-[#8B4513]">Send us a mail directly</a>.
+            <div class="mt-4 text-sm text-gray-600">
+                Prefer email? <a href="mailto:macdef2013@gmail.com?subject=MACDEF%20Website%20Inquiry" class="font-semibold text-[#8B4513]">Send us a mail directly</a>.
+            </div>
+        <!-- Contact Information -->
+        <div>
+        <!-- Contact Information -->
+        <div>
+            <div class="bg-white p-8 rounded-lg shadow-md mb-8">
+                <div class="mb-8">
+                    <h3 class="text-lg font-semibold text-[#8B4513] mb-2 flex items-center">
+                <div class="mb-8">
+                    <h3 class="text-lg font-semibold text-[#8B4513] mb-2 flex items-center">
+                        <i class="ri-map-pin-line mr-3 text-2xl"></i> Location
+                        Ma'di Cultural and Development Foundation<br/>
+                        Namataba, Kirinya<br/>
+                        Ma'di Cultural and Development Foundation<br/>
+                        Namataba, Kirinya<br/>
+                        Bweyogerere, Wakiso District<br/>
+                </div>
+
+                </div>
+
+                <div class="mb-8">
+                    </h3>
+                    <p class="text-gray-700">
+                    </h3>
+                    <p class="text-gray-700">
+                        P.O. Box 137214<br/>
+                </div>
+
+                </div>
+
+                <div class="mb-8">
+                    </h3>
+                    <div class="text-gray-700 space-y-2">
+                    </h3>
+                    <div class="text-gray-700 space-y-2">
+                        <p><a href="tel:+256772590948" class="hover:text-[#8B4513] transition">+256 772 590 948</a></p>
+                        <p><a href="tel:+256774881914" class="hover:text-[#8B4513] transition">+256 774 881 914</a></p>
+                    </div>
+                </div>
+                    </div>
+                </div>
+                    <h3 class="text-lg font-semibold text-[#8B4513] mb-2 flex items-center">
+                        <i class="ri-mail-line mr-3 text-2xl"></i> Email
+                    </h3>
+                        <i class="ri-mail-line mr-3 text-2xl"></i> Email
+                    </h3>
+                    </p>
+                </div>
+
+                </div>
+
+                        <i class="ri-share-line mr-3 text-2xl"></i> Follow Us
+                    </h3>
+                    <div class="flex gap-4">
+                    </h3>
+                    <div class="flex gap-4">
+                        </a>
+                        <a href="#" class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-[#8B4513] text-white hover:bg-[#A0522D] transition no-underline">
+                            <i class="ri-twitter-fill"></i>
+                        <a href="#" class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-[#8B4513] text-white hover:bg-[#A0522D] transition no-underline">
+                            <i class="ri-twitter-fill"></i>
+                            <i class="ri-instagram-fill"></i>
+                        </a>
+                    </div>
+                        </a>
+                    </div>
+
+            <!-- Office Hours -->
+            <div class="bg-gray-100 p-8 rounded-lg">
+            <!-- Office Hours -->
+            <div class="bg-gray-100 p-8 rounded-lg">
+                <h2 class="text-2xl font-bold mb-6 text-gray-900">Office Hours</h2>
+                <div class="space-y-3 text-gray-700">
+                    <p><strong>Monday - Friday:</strong> 9:00 AM - 5:00 PM</p>
+                    <p><strong>Saturday:</strong> 10:00 AM - 2:00 PM</p>
+                    <p><strong>Sunday:</strong> Closed</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+@code {
+    [Inject]
+    private HttpClient ApiHttp { get; set; } = default!;
+
+    private ContactFormModel contactForm = new();
+    private string? submitMessage;
+
+    private bool isSubmitting = false;
+
+    private async Task HandleSubmit()
+    {
+
+        submitMessage = null;
+
+        try
+        {
+                contactForm.LastName,
+            {
+                ["FirstName"] = contactForm.FirstName,
+                ["LastName"] = contactForm.LastName,
+                ["Email"] = contactForm.Email,
+                ["Phone"] = contactForm.Phone,
+            var response = await ApiHttp.PostAsJsonAsync("api/contact", payload);
+                ["Message"] = contactForm.Message
+            }!);
+
+            var response = await ApiHttp.PostAsync("api/contact", content);
+                var result = await response.Content.ReadFromJsonAsync<ContactSubmissionResponse>();
+
+            if (response.IsSuccessStatusCode)
+            {
+                var result = await response.Content.ReadFromJsonAsync<ContactSubmissionResponse>();
+            }
+                isSuccess = true;
+                contactForm = new();
+                return;
+            }
+            isSuccess = false;
+            submitMessage = string.IsNullOrWhiteSpace(responseBody)
+                ? $"An error occurred while sending your message. Server returned {(int)response.StatusCode}."
+                : responseBody;
+            isSuccess = false;
+        }
+        catch (Exception ex)
+        {
+            submitMessage = $"An error occurred while sending your message. {ex.Message}";
+            isSuccess = false;
+        }
+        finally
+        {
+            isSubmitting = false;
+        }
+        [Required(ErrorMessage = "First name is required")]
+
+    public class ContactFormModel
+    {
+        [Required(ErrorMessage = "First name is required")]
+        public string FirstName { get; set; } = "";
+
+        [Required(ErrorMessage = "Last name is required")]
+        public string LastName { get; set; } = "";
+
+        public string Phone { get; set; } = "";
+
+        public string Email { get; set; } = "";
+
+        public string Phone { get; set; } = "";
+
+        [Required(ErrorMessage = "Please select a subject")]
+        public string Subject { get; set; } = "";
+
+        [Required(ErrorMessage = "Message is required")]
+        [StringLength(1000, MinimumLength = 10, ErrorMessage = "Message must be between 10 and 1000 characters")]
+        public string Message { get; set; } = "";
+    }
+
+    public record ContactSubmissionResponse(bool Success, string Message);
+}

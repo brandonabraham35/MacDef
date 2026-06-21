@@ -1,0 +1,17 @@
+﻿{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    }
+  },
+  "Smtp": {
+    "Host": "",
+    "Port": 587,
+    "UseSsl": true,
+    "Username": "",
+    "Password": "",
+    "FromAddress": "",
+    "ToAddress": "macdef2013@gmail.com"
+  }
+}
