@@ -17,3 +17,5 @@ body { font-family: 'Inter', sans-serif; color: #333; background-color: var(--wh
 .social-link { width: 36px; height: 36px; background-color: rgba(255,255,255,0.1); color: white; display: flex; align-items: center; justify-content: center; border-radius: 50%; }
 .brightness-0 { filter: brightness(0); }
 .invert { filter: invert(1); }
+
+.hero-carousel,.hero-slide{min-height:80vh}.hero-slide{background-size:cover;background-position:center;display:flex;align-items:center}.hero-content{max-width:760px}.feature-card{background:#fff;border-radius:18px;padding:30px;box-shadow:0 8px 24px rgba(0,0,0,.08);text-align:center}.feature-card i{font-size:42px;color:var(--gold);display:block;margin-bottom:16px}.feature-card h4{color:var(--navy);font-weight:800}.section-tag{font-weight:800;color:var(--gold);text-transform:uppercase;letter-spacing:1px}.footer-links a{color:rgba(255,255,255,.72);text-decoration:none}.footer-links a:hover{color:#fff}.bg-gold-transparent{background:rgba(212,175,55,.12)}

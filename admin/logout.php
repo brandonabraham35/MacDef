@@ -1,3 +1,1 @@
-<?php
-session_start(); session_destroy(); header("Location: login.php"); exit();
-?>
+<?php session_start(); unset($_SESSION['admin']); session_destroy(); header('Location: login.php'); exit; ?>

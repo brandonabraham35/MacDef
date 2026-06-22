@@ -1,76 +1,26 @@
--- MACDEF PHP + MySQL database setup
-CREATE DATABASE IF NOT EXISTS macdef_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-USE macdef_db;
-
-CREATE TABLE IF NOT EXISTS users (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  full_name VARCHAR(150) NOT NULL,
-  email VARCHAR(190) NOT NULL UNIQUE,
-  password VARCHAR(255) NOT NULL,
-  role ENUM('admin') NOT NULL DEFAULT 'admin',
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
-CREATE TABLE IF NOT EXISTS settings (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  setting_key VARCHAR(100) NOT NULL UNIQUE,
-  setting_value TEXT NULL,
-  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
-CREATE TABLE IF NOT EXISTS contact_submissions (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  first_name VARCHAR(100) NOT NULL,
-  last_name VARCHAR(100) NOT NULL,
-  email VARCHAR(190) NOT NULL,
-  subject VARCHAR(255) NOT NULL,
-  message TEXT NOT NULL,
-  is_read TINYINT(1) NOT NULL DEFAULT 0,
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
-CREATE TABLE IF NOT EXISTS events (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  title VARCHAR(255) NOT NULL,
-  event_date VARCHAR(100) NOT NULL,
-  description TEXT NOT NULL,
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
-CREATE TABLE IF NOT EXISTS gallery (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  title VARCHAR(255) NOT NULL,
-  image_path VARCHAR(255) NOT NULL,
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
-INSERT INTO settings (setting_key, setting_value) VALUES
-('site_name', 'MACDEF'),
-('site_title', 'Ma\'di Cultural and Development Foundation'),
-('contact_phone', '+256 000 000 000'),
-('contact_email', 'info@macdef.org'),
-('contact_address', 'Uganda'),
-('facebook_url', '#'),
-('twitter_url', '#'),
-('instagram_url', '#')
-ON DUPLICATE KEY UPDATE setting_value = VALUES(setting_value);
-
-INSERT INTO events (title, event_date, description) VALUES
-('Community Cultural Gathering', 'Coming Soon', 'A MACDEF community gathering focused on unity, heritage, and development.'),
-('Youth Development Meeting', 'Coming Soon', 'A youth-focused engagement to encourage leadership, skills, and cultural pride.')
-ON DUPLICATE KEY UPDATE title = title;
-
-INSERT INTO gallery (title, image_path) VALUES
-('Community Celebration', 'uploads/gallery/madi-community-celebration.jpg'),
-('Elders Council', 'uploads/gallery/madi-elders-council.jpg'),
-('Traditional Performance', 'uploads/gallery/traditional-performance-dancers.jpg'),
-('Youth Cultural Activity', 'uploads/gallery/youth-cultural-activity.jpg')
-ON DUPLICATE KEY UPDATE title = title;
-
--- Default admin login:
--- Email: admin@macdef.org
--- Password: admin123
--- Change this password immediately after first login.
-INSERT INTO users (full_name, email, password, role) VALUES
-('MACDEF Administrator', 'admin@macdef.org', '$2y$12$.15ROoS4n4cnKFbNCejK/O8clS23tLRVlH8cloo8Ph9UN0EzkNckW', 'admin')
-ON DUPLICATE KEY UPDATE email = email;
+CREATE DATABASE IF NOT EXISTS macdef CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE macdef;
+CREATE TABLE IF NOT EXISTS users (id INT AUTO_INCREMENT PRIMARY KEY, full_name VARCHAR(150) NOT NULL, email VARCHAR(190) NOT NULL UNIQUE, password VARCHAR(255) NOT NULL, role ENUM('admin') NOT NULL DEFAULT 'admin', created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE IF NOT EXISTS settings (id INT AUTO_INCREMENT PRIMARY KEY, setting_key VARCHAR(100) NOT NULL UNIQUE, setting_value TEXT NULL, updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE IF NOT EXISTS content_blocks (id INT AUTO_INCREMENT PRIMARY KEY, block_key VARCHAR(100) NOT NULL UNIQUE, title VARCHAR(255) NULL, body TEXT NULL, updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE IF NOT EXISTS hero_slides (id INT AUTO_INCREMENT PRIMARY KEY, image_path VARCHAR(255) NULL, heading VARCHAR(255) NOT NULL, subheading TEXT NULL, button_text VARCHAR(100) NULL, button_link VARCHAR(255) NULL, sort_order INT DEFAULT 0, is_active TINYINT(1) DEFAULT 1, created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE IF NOT EXISTS programs (id INT AUTO_INCREMENT PRIMARY KEY, title VARCHAR(255) NOT NULL, icon VARCHAR(60) NULL, description TEXT NOT NULL, sort_order INT DEFAULT 0, is_active TINYINT(1) DEFAULT 1, created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE IF NOT EXISTS events (id INT AUTO_INCREMENT PRIMARY KEY, title VARCHAR(255) NOT NULL, event_date VARCHAR(100) NOT NULL, description TEXT NOT NULL, image_path VARCHAR(255) NULL, is_active TINYINT(1) DEFAULT 1, created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE IF NOT EXISTS gallery (id INT AUTO_INCREMENT PRIMARY KEY, title VARCHAR(255) NOT NULL, image_path VARCHAR(255) NOT NULL, sort_order INT DEFAULT 0, is_active TINYINT(1) DEFAULT 1, created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE IF NOT EXISTS contact_submissions (id INT AUTO_INCREMENT PRIMARY KEY, first_name VARCHAR(100) NOT NULL, last_name VARCHAR(100) NOT NULL, email VARCHAR(190) NOT NULL, subject VARCHAR(255) NOT NULL, message TEXT NOT NULL, is_read TINYINT(1) NOT NULL DEFAULT 0, created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE IF NOT EXISTS email_logs (id INT AUTO_INCREMENT PRIMARY KEY, recipient VARCHAR(190) NOT NULL, subject VARCHAR(255) NOT NULL, body MEDIUMTEXT NULL, status ENUM('sent','failed') NOT NULL DEFAULT 'failed', error_message TEXT NULL, created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+INSERT INTO settings(setting_key,setting_value) VALUES
+('site_name','MACDEF'),('site_title','Ma\'di Cultural and Development Foundation'),('contact_phone','+256 000 000 000'),('contact_email','info@macdef.org'),('admin_email','info@macdef.org'),('contact_address','Uganda'),('facebook_url','#'),('twitter_url','#'),('instagram_url','#'),('smtp_host',''),('smtp_auth','1'),('smtp_user',''),('smtp_pass',''),('smtp_secure','tls'),('smtp_port','587'),('smtp_from_email','info@macdef.org'),('smtp_from_name','MACDEF') ON DUPLICATE KEY UPDATE setting_value=VALUES(setting_value);
+INSERT INTO content_blocks(block_key,title,body) VALUES
+('welcome','Building a Stronger Ma\'di Community','Built on strong values and a commitment to the Ma\'di people, our foundation guides everything we do.'),
+('mission','Our Mission','To preserve Ma\'di heritage, promote community development, and empower people through culture, education, unity, and sustainable initiatives.'),
+('vision','Our Vision','A united, empowered, and culturally proud Ma\'di community contributing meaningfully to development.'),
+('goals','Our Goals','MACDEF focuses on cultural preservation, community empowerment, youth development, education, leadership, and social transformation.') ON DUPLICATE KEY UPDATE title=VALUES(title), body=VALUES(body);
+INSERT INTO hero_slides(heading,subheading,button_text,button_link,sort_order,is_active) VALUES
+('Ma\'di Cultural and Development Foundation','Preserving our rich heritage, empowering our community, and building a prosperous future.','Explore Our Mission','mission.php',1,1),
+('Community. Culture. Development.','Working together for a stronger and more united Ma\'di community.','Get Involved','contact.php',2,1) ON DUPLICATE KEY UPDATE heading=heading;
+INSERT INTO programs(title,icon,description,sort_order,is_active) VALUES
+('Cultural Preservation','ri-community-fill','Promoting Ma\'di identity, language, traditions, and cultural values.',1,1),('Youth Empowerment','ri-graduation-cap-fill','Supporting young people through leadership, skills, and development opportunities.',2,1),('Community Development','ri-hand-heart-fill','Building partnerships and programs that improve community welfare.',3,1) ON DUPLICATE KEY UPDATE title=title;
+INSERT INTO events(title,event_date,description,is_active) VALUES ('Community Cultural Gathering','Coming Soon','A MACDEF community gathering focused on unity, heritage, and development.',1),('Youth Development Meeting','Coming Soon','A youth-focused engagement to encourage leadership, skills, and cultural pride.',1) ON DUPLICATE KEY UPDATE title=title;
+INSERT INTO gallery(title,image_path,sort_order,is_active) VALUES ('Community Celebration','uploads/gallery/madi-community-celebration.jpg',1,1),('Elders Council','uploads/gallery/madi-elders-council.jpg',2,1),('Traditional Performance','uploads/gallery/traditional-performance-dancers.jpg',3,1),('Youth Cultural Activity','uploads/gallery/youth-cultural-activity.jpg',4,1) ON DUPLICATE KEY UPDATE title=title;
+INSERT INTO users(full_name,email,password,role) VALUES ('MACDEF Administrator','admin@macdef.org','$2y$12$.15ROoS4n4cnKFbNCejK/O8clS23tLRVlH8cloo8Ph9UN0EzkNckW','admin') ON DUPLICATE KEY UPDATE email=email;

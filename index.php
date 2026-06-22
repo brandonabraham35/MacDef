@@ -1,37 +1,15 @@
-<?php
-$page_title = "Home";
-require_once 'includes/header.php';
+<?php $page_title='Home'; require_once 'includes/header.php';
+$slides=db()->query("SELECT * FROM hero_slides WHERE is_active=1 ORDER BY sort_order ASC,id DESC")->fetchAll();
+$programs=db()->query("SELECT * FROM programs WHERE is_active=1 ORDER BY sort_order ASC,id DESC LIMIT 3")->fetchAll();
+$events=db()->query("SELECT * FROM events WHERE is_active=1 ORDER BY id DESC LIMIT 3")->fetchAll();
+$gallery=db()->query("SELECT * FROM gallery WHERE is_active=1 ORDER BY sort_order ASC,id DESC LIMIT 4")->fetchAll();
+$welcome=db()->query("SELECT * FROM content_blocks WHERE block_key='welcome'")->fetch();
 ?>
-<section class="hero-section text-white d-flex align-items-center">
-    <div class="container py-5">
-        <div class="row align-items-center">
-            <div class="col-lg-7">
-                <div class="hero-content">
-                    <span class="badge bg-gold-transparent text-gold px-3 py-2 rounded-pill mb-4 fw-bold">Welcome to MACDEF</span>
-                    <h1 class="display-3 fw-bold mb-4">Ma'di Cultural and Development Foundation</h1>
-                    <p class="lead mb-5 opacity-90">Preserving our rich heritage, empowering our community, and building a prosperous future.</p>
-                    <div class="d-flex flex-wrap gap-3">
-                        <a href="mission.php" class="btn btn-gold btn-lg rounded-pill px-5">Explore Our Mission</a>
-                        <a href="contact.php" class="btn btn-outline-light btn-lg rounded-pill px-5">Get In Touch</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<section class="welcome-section py-5">
-    <div class="container py-5">
-        <div class="row align-items-center g-5">
-            <div class="col-lg-6">
-                <div class="section-tag mb-3">About Us</div>
-                <h2 class="display-5 fw-bold mb-4 text-navy">Building a Stronger Ma'di Community</h2>
-                <p class="text-muted mb-4 lead">Built on strong values and a commitment to the Ma'di people, our foundation guides everything we do.</p>
-                <a href="mission.php" class="btn btn-navy rounded-pill px-4 py-2">Read More About Us</a>
-            </div>
-            <div class="col-lg-6">
-                <img src="uploads/gallery/madi-community-celebration.jpg" alt="MACDEF Community" class="img-fluid rounded-4 shadow">
-            </div>
-        </div>
-    </div>
-</section>
+<section id="macdefHero" class="carousel slide hero-carousel" data-bs-ride="carousel"><div class="carousel-inner">
+<?php foreach($slides as $i=>$s): $img=$s['image_path'] ?: 'uploads/gallery/madi-community-celebration.jpg'; ?><div class="carousel-item <?= $i===0?'active':'' ?>"><div class="hero-slide" style="background-image:linear-gradient(90deg,rgba(0,45,98,.86),rgba(0,45,98,.42)),url('<?= e($img) ?>')"><div class="container"><div class="hero-content text-white"><span class="badge bg-gold-transparent text-gold px-3 py-2 rounded-pill mb-4 fw-bold">Welcome to MACDEF</span><h1 class="display-3 fw-bold mb-4"><?= e($s['heading']) ?></h1><p class="lead mb-5"><?= e($s['subheading']) ?></p><?php if($s['button_text']):?><a href="<?= e($s['button_link'] ?: 'contact.php') ?>" class="btn btn-gold btn-lg rounded-pill px-5"><?= e($s['button_text']) ?></a><?php endif;?></div></div></div></div><?php endforeach; ?>
+</div><button class="carousel-control-prev" type="button" data-bs-target="#macdefHero" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button><button class="carousel-control-next" type="button" data-bs-target="#macdefHero" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button></section>
+<section class="welcome-section py-5"><div class="container py-5"><div class="row align-items-center g-5"><div class="col-lg-6"><div class="section-tag mb-3">About Us</div><h2 class="display-5 fw-bold mb-4 text-navy"><?= e($welcome['title'] ?? 'Building a Stronger Ma\'di Community') ?></h2><p class="text-muted mb-4 lead"><?= e($welcome['body'] ?? '') ?></p><a href="mission.php" class="btn btn-navy rounded-pill px-4 py-2">Read More About Us</a></div><div class="col-lg-6"><img src="uploads/gallery/madi-community-celebration.jpg" class="img-fluid rounded-4 shadow"></div></div></div></section>
+<section class="py-5 bg-light"><div class="container"><div class="text-center mb-5"><h2 class="text-navy fw-bold">What We Do</h2></div><div class="row g-4"><?php foreach($programs as $p):?><div class="col-md-4"><div class="feature-card h-100"><i class="<?= e($p['icon'] ?: 'ri-hand-heart-fill') ?>"></i><h4><?= e($p['title']) ?></h4><p><?= e($p['description']) ?></p></div></div><?php endforeach;?></div></div></section>
+<section class="py-5"><div class="container"><h2 class="text-navy fw-bold mb-4">Latest Events</h2><div class="row g-4"><?php foreach($events as $ev):?><div class="col-md-4"><div class="card h-100 shadow-sm border-0"><div class="card-body"><small class="text-gold fw-bold"><?= e($ev['event_date']) ?></small><h5><?= e($ev['title']) ?></h5><p><?= e(mb_strimwidth($ev['description'],0,120,'...')) ?></p></div></div></div><?php endforeach;?></div></div></section>
+<section class="py-5 bg-light"><div class="container"><h2 class="text-navy fw-bold mb-4">Gallery</h2><div class="row g-3"><?php foreach($gallery as $g):?><div class="col-6 col-md-3"><img src="<?= e($g['image_path']) ?>" class="img-fluid rounded-3 shadow-sm" alt="<?= e($g['title']) ?>"></div><?php endforeach;?></div></div></section>
 <?php require_once 'includes/footer.php'; ?>
