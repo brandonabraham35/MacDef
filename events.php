@@ -2,18 +2,47 @@
 $page_title = 'Events';
 require_once __DIR__ . '/includes/header.php';
 $events = [];
-if ($pdo) {
-    try { $events = $pdo->query('SELECT * FROM events ORDER BY created_at DESC')->fetchAll(); } catch (PDOException $e) { $events = []; }
+try {
+    $events = db()->query('SELECT * FROM events WHERE is_active=1 ORDER BY created_at DESC')->fetchAll();
+} catch (Exception $e) {
+    $events = [];
 }
 ?>
-<section class="page-header bg-navy text-white py-5"><div class="container py-4 text-center"><h1 class="display-4 fw-bold mb-3">Community Events</h1></div></section>
-<main class="container py-5">
-    <?php if(!$pdo): ?><div class="alert alert-warning">Events will appear after the database is imported.</div><?php endif; ?>
-    <div class="row g-4">
-        <?php foreach($events as $row): ?>
-            <div class="col-md-6"><div class="card border-0 shadow-sm rounded-4 p-4 h-100"><h4 class="text-navy fw-bold"><?php echo e($row['title']); ?></h4><p class="text-gold fw-bold"><?php echo e($row['event_date']); ?></p><p><?php echo e($row['description']); ?></p></div></div>
-        <?php endforeach; ?>
-        <?php if(empty($events)): ?><div class="col-12 text-center text-muted">No events have been added yet.</div><?php endif; ?>
+<section class="section-padding bg-light">
+    <div class="container text-center">
+        <span class="section-tag">MACDEF Updates</span>
+        <h1 class="display-4 fw-bold mb-3 text-navy">Events & News</h1>
+        <p class="lead text-muted mx-auto" style="max-width: 700px;">Stay informed about our upcoming cultural gatherings, community development projects, and organization announcements.</p>
+    </div>
+</section>
+
+<main class="section-padding">
+    <div class="container">
+        <div class="row g-4">
+            <?php foreach($events as $row): ?>
+                <div class="col-lg-4 col-md-6">
+                    <div class="card news-card h-100">
+                        <?php if($row['image_path']): ?>
+                            <img src="<?= e($row['image_path']) ?>" class="card-img-top" alt="<?= e($row['title']) ?>">
+                        <?php endif; ?>
+                        <div class="card-body">
+                            <small class="text-gold fw-bold mb-2 d-block"><?= e($row['event_date']) ?></small>
+                            <h4 class="card-title fw-bold text-navy h5"><?= e($row['title']) ?></h4>
+                            <p class="text-muted small"><?= e(mb_strimwidth($row['description'], 0, 150, '...')) ?></p>
+                            <a href="#" class="btn btn-link text-gold p-0 text-decoration-none fw-bold">Read Full Story</a>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+
+            <?php if(empty($events)): ?>
+                <div class="col-12 text-center py-5">
+                    <i class="ri-calendar-todo-line display-1 text-light mb-4 d-block"></i>
+                    <p class="text-muted fs-5">No events have been added yet. Please check back later.</p>
+                </div>
+            <?php endif; ?>
+        </div>
     </div>
 </main>
+
 <?php require_once __DIR__ . '/includes/footer.php'; ?>
