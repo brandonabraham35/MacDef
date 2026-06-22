@@ -7,4 +7,4 @@ MACDEF Enhanced PHP Version
 6. Admin: http://localhost/MACDEF/admin/login.php
 Email: admin@macdef.org
 Password: admin123
-Mailing: configure SMTP in Admin > Settings / Mailing. Until SMTP is set, emails may fail but are logged in Email Logs.
+Mailing: configure SMTP in includes/config.php. Until SMTP is set, emails may fail but are logged in Email Logs.

@@ -10,4 +10,15 @@ define('SITE_URL', 'http://localhost/MACDEF');
 define('SITE_NAME', 'MACDEF');
 define('BASE_PATH', dirname(__DIR__));
 define('UPLOADS_PATH', 'uploads/');
+
+// Mailing Settings
+define('SMTP_HOST', '');
+define('SMTP_PORT', '587');
+define('SMTP_USER', '');
+define('SMTP_PASS', '');
+define('SMTP_AUTH', true);
+define('SMTP_SECURE', 'tls');
+define('SMTP_FROM_EMAIL', 'info@macdef.org');
+define('SMTP_FROM_NAME', 'MACDEF');
+define('ADMIN_EMAIL', 'info@macdef.org');
 ?>
