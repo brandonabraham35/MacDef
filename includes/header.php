@@ -1,7 +1,7 @@
 <?php
-require_once 'includes/db.php';
-require_once 'includes/functions.php';
-require_once 'includes/auth.php';
+require_once __DIR__ . '/db.php';
+require_once __DIR__ . '/functions.php';
+require_once __DIR__ . '/auth.php';
 
 $site_name = getSetting('site_name', 'MACDEF');
 $site_title = getSetting('site_title', 'Ma\'di Cultural and Development Foundation');
@@ -11,7 +11,7 @@ $site_title = getSetting('site_title', 'Ma\'di Cultural and Development Foundati
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo isset($page_title) ? $page_title . " | " . $site_name : $site_title; ?></title>
+    <title><?php echo e(isset($page_title) ? $page_title . ' | ' . $site_name : $site_title); ?></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
@@ -23,15 +23,15 @@ $site_title = getSetting('site_title', 'Ma\'di Cultural and Development Foundati
         <div class="row align-items-center">
             <div class="col-md-8">
                 <div class="d-flex gap-4 info-items">
-                    <span class="d-flex align-items-center gap-2"><i class="ri-phone-fill text-gold"></i> <?php echo getSetting('contact_phone'); ?></span>
-                    <span class="d-flex align-items-center gap-2"><i class="ri-mail-fill text-gold"></i> <?php echo getSetting('contact_email'); ?></span>
+                    <span class="d-flex align-items-center gap-2"><i class="ri-phone-fill text-gold"></i> <?php echo e(getSetting('contact_phone', '+256 000 000 000')); ?></span>
+                    <span class="d-flex align-items-center gap-2"><i class="ri-mail-fill text-gold"></i> <?php echo e(getSetting('contact_email', 'info@macdef.org')); ?></span>
                 </div>
             </div>
             <div class="col-md-4 text-end">
                 <div class="social-links d-flex gap-3 justify-content-end">
-                    <a href="<?php echo getSetting('facebook_url'); ?>" class="text-white"><i class="ri-facebook-fill"></i></a>
-                    <a href="<?php echo getSetting('twitter_url'); ?>" class="text-white"><i class="ri-twitter-fill"></i></a>
-                    <a href="<?php echo getSetting('instagram_url'); ?>" class="text-white"><i class="ri-instagram-fill"></i></a>
+                    <a href="<?php echo e(getSetting('facebook_url', '#')); ?>" class="text-white"><i class="ri-facebook-fill"></i></a>
+                    <a href="<?php echo e(getSetting('twitter_url', '#')); ?>" class="text-white"><i class="ri-twitter-fill"></i></a>
+                    <a href="<?php echo e(getSetting('instagram_url', '#')); ?>" class="text-white"><i class="ri-instagram-fill"></i></a>
                 </div>
             </div>
         </div>
