@@ -22,9 +22,13 @@ try {
             <?php foreach($events as $row): ?>
                 <div class="col-lg-4 col-md-6">
                     <div class="card news-card h-100">
-                        <?php if($row['image_path']): ?>
-                            <img src="<?= e($row['image_path']) ?>" class="card-img-top" alt="<?= e($row['title']) ?>">
-                        <?php endif; ?>
+                        <?php
+$eventImage = $row['image_path'] ?? 'uploads/gallery/youth-cultural-activity.jpg';
+?>
+
+<img src="<?= e($eventImage) ?>"
+     class="card-img-top"
+     alt="<?= e($row['title']) ?>">
                         <div class="card-body">
                             <small class="text-gold fw-bold mb-2 d-block"><?= e($row['event_date']) ?></small>
                             <h4 class="card-title fw-bold text-navy h5"><?= e($row['title']) ?></h4>

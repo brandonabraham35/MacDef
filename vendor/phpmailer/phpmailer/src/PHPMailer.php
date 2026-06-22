@@ -417,14 +417,14 @@ class PHPMailer
      * By default PHPMailer will use `echo` if run from a `cli` or `cli-server` SAPI, `html` otherwise.
      * Alternatively, you can provide a callable expecting two params: a message string and the debug level:
      *
-     * ```php
+     * 
      * $mail->Debugoutput = function($str, $level) {echo "debug level $level; message: $str";};
      * ```
      *
      * Alternatively, you can pass in an instance of a PSR-3 compatible logger, though only `debug`
      * level output is used:
      *
-     * ```php
+     * 
      * $mail->Debugoutput = new myPsr3Logger;
      * ```
      *
@@ -1494,7 +1494,7 @@ class PHPMailer
      * * `noregex` Don't use a regex: super fast, really dumb.
      * Alternatively you may pass in a callable to inject your own validator, for example:
      *
-     * ```php
+     * 
      * PHPMailer::validateAddress('user@example.com', function($address) {
      *     return (strpos($address, '@') !== false);
      * });
@@ -4825,7 +4825,7 @@ class PHPMailer
      * which was removed for license reasons in #232.
      * Example usage:
      *
-     * ```php
+     * 
      * //Use default conversion
      * $plain = $mail->html2text($html);
      * //Use your own custom converter

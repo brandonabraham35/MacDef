@@ -2,10 +2,29 @@
 $page_title = 'Home';
 require_once 'includes/header.php';
 
-$slides = db()->query("SELECT * FROM hero_slides WHERE is_active=1 ORDER BY sort_order ASC, id DESC")->fetchAll();
-$programs = db()->query("SELECT * FROM programs WHERE is_active=1 ORDER BY sort_order ASC, id DESC LIMIT 3")->fetchAll();
-$events = db()->query("SELECT * FROM events WHERE is_active=1 ORDER BY id DESC LIMIT 4")->fetchAll();
-$welcome = db()->query("SELECT * FROM content_blocks WHERE block_key='welcome'")->fetch();
+try {
+    $slides = db()->query("SELECT * FROM hero_slides WHERE is_active=1 ORDER BY sort_order ASC, id DESC")->fetchAll();
+} catch (Exception $e) {
+    die("Slides Error: " . $e->getMessage());
+}
+
+try {
+    $programs = db()->query("SELECT * FROM programs WHERE is_active=1 ORDER BY sort_order ASC, id DESC LIMIT 3")->fetchAll();
+} catch (Exception $e) {
+    die("Programs Error: " . $e->getMessage());
+}
+
+try {
+    $events = db()->query("SELECT * FROM events WHERE is_active=1 ORDER BY id DESC LIMIT 4")->fetchAll();
+} catch (Exception $e) {
+    die("Events Error: " . $e->getMessage());
+}
+
+try {
+    $welcome = db()->query("SELECT * FROM content_blocks WHERE block_key='welcome'")->fetch();
+} catch (Exception $e) {
+    die("Welcome Content Error: " . $e->getMessage());
+}
 ?>
 
 <!-- Hero Slider -->
@@ -112,7 +131,10 @@ $welcome = db()->query("SELECT * FROM content_blocks WHERE block_key='welcome'")
                     <?php foreach($events as $ev): ?>
                     <div class="col-lg-3 col-md-6">
                         <div class="card news-card h-100">
-                            <img src="<?= e($ev['image_path'] ?: 'uploads/gallery/youth-cultural-activity.jpg') ?>" class="card-img-top" alt="<?= e($ev['title']) ?>">
+                            <?php
+$eventImg = !empty($ev['image_path']) ? $ev['image_path'] : 'uploads/gallery/youth-cultural-activity.jpg';
+?>
+<img src="<?= e($eventImg) ?>" class="card-img-top" alt="<?= e($ev['title']) ?>">
                             <div class="card-body">
                                 <small class="text-muted d-block mb-2"><?= e($ev['event_date']) ?></small>
                                 <h5 class="card-title fw-bold h6"><?= e($ev['title']) ?></h5>
