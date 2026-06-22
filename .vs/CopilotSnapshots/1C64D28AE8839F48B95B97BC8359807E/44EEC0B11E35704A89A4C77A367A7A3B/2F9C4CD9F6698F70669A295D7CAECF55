@@ -1,0 +1,149 @@
+﻿@page "/traditional-arts"
+@page "/music-dance"
+@page "/ceremonies"
+@page "/language"
+@page "/folklore"
+@page "/stories"
+@page "/youth-programs"
+@page "/elders-council"
+@page "/documents"
+@page "/research"
+@page "/library"
+@page "/history"
+@page "/leadership"
+@page "/organisational-structure"
+@namespace MACDEF.Client.Pages
+
+<div class="bg-gradient-to-r from-[#8B4513] to-[#D2691E] text-white py-16">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+        <h1 class="text-4xl font-bold mb-4">@GetPageTitle()</h1>
+        <p class="text-lg text-gray-100">@GetPageSubtitle()</p>
+    </div>
+</div>
+
+<main class="max-w-4xl mx-auto py-16 px-6">
+    <div class="prose prose-lg max-w-none">
+        <p class="text-lg text-gray-700 mb-8">
+            @GetPageDescription()
+        </p>
+
+        <!-- Placeholder Content -->
+        <section class="bg-gray-50 p-8 rounded-lg border border-gray-200 mb-8">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">Page Content</h2>
+            <p class="text-gray-700 mb-4">
+                This page is being developed and will feature comprehensive information about this important aspect of Madi culture and community.
+            </p>
+            <p class="text-gray-600">
+                Visit us again soon for detailed content, resources, and updates about this section.
+            </p>
+        </section>
+
+        <!-- Learn More CTA -->
+        <div class="bg-gradient-to-r from-[#8B4513] to-[#D2691E] text-white p-8 rounded-lg">
+            <h3 class="text-2xl font-bold mb-4">Want to Learn More?</h3>
+            <p class="mb-6">Get in touch with us for more information about this topic or to contribute your knowledge and experiences.</p>
+            <a href="/contact" class="inline-block bg-white text-[#8B4513] px-6 py-2 rounded-lg font-semibold hover:bg-gray-100 transition">
+                Contact Us
+            </a>
+        </div>
+    </div>
+</main>
+
+@code {
+    [Inject]
+    private NavigationManager NavigationManager { get; set; } = null!;
+
+    private string GetPageTitle()
+    {
+        return NavigationManager.Uri switch
+        {
+            _ when NavigationManager.Uri.Contains("traditional-arts") => "Traditional Arts",
+            _ when NavigationManager.Uri.Contains("music-dance") => "Music & Dance",
+            _ when NavigationManager.Uri.Contains("ceremonies") => "Ceremonies",
+            _ when NavigationManager.Uri.Contains("language") => "Language",
+            _ when NavigationManager.Uri.Contains("folklore") => "Folklore",
+            _ when NavigationManager.Uri.Contains("stories") => "Community Stories",
+            _ when NavigationManager.Uri.Contains("youth-programs") => "Youth Programs",
+            _ when NavigationManager.Uri.Contains("elders-council") => "Elders Council",
+            _ when NavigationManager.Uri.Contains("documents") => "Documents",
+            _ when NavigationManager.Uri.Contains("research") => "Research",
+            _ when NavigationManager.Uri.Contains("library") => "Library",
+            _ when NavigationManager.Uri.Contains("history") => "Our History",
+            _ when NavigationManager.Uri.Contains("leadership") => "Leadership",
+            _ when NavigationManager.Uri.Contains("organisational-structure") => "Organisational Structure",
+            _ => "Madi Culture"
+        };
+    }
+
+    private string GetPageSubtitle()
+    {
+        return NavigationManager.Uri switch
+        {
+            _ when NavigationManager.Uri.Contains("traditional-arts") => "Celebrating our artistic heritage",
+            _ when NavigationManager.Uri.Contains("music-dance") => "The rhythm of our culture",
+            _ when NavigationManager.Uri.Contains("ceremonies") => "Sacred traditions and rituals",
+            _ when NavigationManager.Uri.Contains("language") => "Preserving our native tongue",
+            _ when NavigationManager.Uri.Contains("folklore") => "Tales that shape our identity",
+            _ when NavigationManager.Uri.Contains("stories") => "Voices from our community",
+            _ when NavigationManager.Uri.Contains("youth-programs") => "Empowering the next generation",
+            _ when NavigationManager.Uri.Contains("elders-council") => "Wisdom from our leaders",
+            _ when NavigationManager.Uri.Contains("documents") => "Important resources and records",
+            _ when NavigationManager.Uri.Contains("research") => "Academic and cultural research",
+            _ when NavigationManager.Uri.Contains("library") => "Knowledge and learning",
+            _ when NavigationManager.Uri.Contains("history") => "Our journey through time",
+            _ when NavigationManager.Uri.Contains("leadership") => "Who guides our community",
+            _ when NavigationManager.Uri.Contains("organisational-structure") => "How we are organized",
+            _ => "Exploring Madi heritage"
+        };
+    }
+
+    private string GetPageDescription()
+    {
+        return NavigationManager.Uri switch
+        {
+            _ when NavigationManager.Uri.Contains("traditional-arts") =>
+                "Madi traditional arts encompass a rich tapestry of creative expressions including beadwork, weaving, carving, painting, and sculpture. These art forms tell stories of our people and preserve cultural knowledge.",
+
+            _ when NavigationManager.Uri.Contains("music-dance") =>
+                "Music and dance are integral to Madi identity, featuring distinctive rhythms, instruments, and movements that celebrate joy, mark important occasions, and connect us with our ancestors.",
+
+            _ when NavigationManager.Uri.Contains("ceremonies") =>
+                "From birth celebrations to marriage rites and funerals, Madi ceremonies mark important life transitions and reinforce community bonds through meaningful rituals and traditions.",
+
+            _ when NavigationManager.Uri.Contains("language") =>
+                "The Madi language is the voice of our heritage. We are committed to teaching, preserving, and promoting fluency in our native language among all generations.",
+
+            _ when NavigationManager.Uri.Contains("folklore") =>
+                "Our folklore contains timeless wisdom, moral lessons, and the collective memory of the Madi people. Through stories and legends, we transmit values and understanding across generations.",
+
+            _ when NavigationManager.Uri.Contains("stories") =>
+                "Community members share their personal experiences, achievements, and insights, creating a living archive of contemporary Madi life and culture.",
+
+            _ when NavigationManager.Uri.Contains("youth-programs") =>
+                "Youth programs provide mentorship, skills training, and cultural education to empower young Madi people as advocates and custodians of our heritage.",
+
+            _ when NavigationManager.Uri.Contains("elders-council") =>
+                "Our respected elders provide guidance, wisdom, and leadership, ensuring that traditional knowledge and values continue to guide the community.",
+
+            _ when NavigationManager.Uri.Contains("documents") =>
+                "Access important documents, publications, reports, and archival materials that document Madi history and culture.",
+
+            _ when NavigationManager.Uri.Contains("research") =>
+                "Academic research on Madi culture, history, language, and society contributes to global understanding and appreciation of our heritage.",
+
+            _ when NavigationManager.Uri.Contains("library") =>
+                "Our library houses books, documents, recordings, and digital resources about Madi culture, history, language, and contemporary issues.",
+
+            _ when NavigationManager.Uri.Contains("history") =>
+                "Understanding our past shapes our present and future. Explore the rich history of the Madi people.",
+
+            _ when NavigationManager.Uri.Contains("leadership") =>
+                "Meet the dedicated individuals leading MACDEF and serving the Madi community.",
+
+            _ when NavigationManager.Uri.Contains("organisational-structure") =>
+                "Learn about how MACDEF is organized and structured to effectively serve our community.",
+
+            _ => "Explore the diverse aspects of Madi cultural heritage and community life."
+        };
+    }
+}

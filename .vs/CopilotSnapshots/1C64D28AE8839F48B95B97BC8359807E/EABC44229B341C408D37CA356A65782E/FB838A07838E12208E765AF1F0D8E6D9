@@ -1,0 +1,288 @@
+﻿@page "/"
+@namespace MACDEF.Client.Pages
+
+<!-- ============= HERO SECTION ============= -->
+<section class="hero-section text-white py-24 relative">
+    <div class="hero-content max-w-6xl mx-auto px-6">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div class="slide-in-left">
+                <div class="inline-flex items-center bg-white/20 px-4 py-2 rounded-full mb-6 backdrop-blur-sm shadow-lg">
+                    <span class="text-sm font-semibold tracking-wide">Welcome to MACDEF</span>
+                </div>
+                <h1 class="text-4xl md:text-6xl font-black mb-5 leading-tight text-white drop-shadow-[0_3px_10px_rgba(0,0,0,0.35)]">
+                    Ma'di Cultural and Development Foundation
+                </h1>
+                <p class="text-lg md:text-xl text-gray-100 mb-8 leading-relaxed max-w-2xl">
+                    Preserving our rich heritage, empowering our community, and building a prosperous future through cultural excellence and sustainable development.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="/mission" class="bg-white text-[#8B4513] px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition transform hover:scale-105 shadow-lg no-underline">
+                        <i class="ri-arrow-right-line mr-2"></i>Explore Our Mission
+                    </a>
+                    <a href="/contact" class="border-2 border-white text-white px-8 py-4 rounded-lg font-bold hover:bg-white hover:text-[#8B4513] transition transform hover:scale-105 no-underline">
+                        <i class="ri-phone-line mr-2"></i>Get In Touch
+                    </a>
+                </div>
+            </div>
+
+            <div class="slide-in-right hidden md:block">
+                <div class="relative">
+                    <div class="absolute inset-0 bg-gradient-to-br from-[#FFD700] to-[#CD853F] rounded-3xl opacity-20 blur-3xl"></div>
+                    <div class="relative bg-white/10 backdrop-blur-sm p-8 rounded-3xl border border-white/20 shadow-2xl">
+                        <div class="space-y-6">
+                            <div class="flex items-center gap-4">
+                                <div class="text-4xl text-[#FFD700]"><i class="ri-shield-check-line"></i></div>
+                                <div>
+                                    <p class="font-bold text-white">Cultural Preservation</p>
+                                    <p class="text-sm text-gray-100">Documenting & protecting heritage</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <div class="text-4xl text-[#FFD700]"><i class="ri-group-line"></i></div>
+                                <div>
+                                    <p class="font-bold text-white">Community Building</p>
+                                    <p class="text-sm text-gray-100">Uniting Ma'di people globally</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <div class="text-4xl text-[#FFD700]"><i class="ri-leaf-line"></i></div>
+                                <div>
+                                    <p class="font-bold text-white">Sustainable Growth</p>
+                                    <p class="text-sm text-gray-100">Economic & social development</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============= CULTURAL BANNER STRIP ============= -->
+<section class="py-4 bg-[#F5E6D3] border-y border-[#E7D5BC]">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="grid grid-cols-3 md:grid-cols-6 gap-3">
+            <div class="cultural-strip-card bg-[#8B4513]">Heritage</div>
+            <div class="cultural-strip-card bg-[#D2691E]">Language</div>
+            <div class="cultural-strip-card bg-[#CD853F]">Culture</div>
+            <div class="cultural-strip-card bg-[#A0522D]">Unity</div>
+            <div class="cultural-strip-card bg-[#8B4513]">Elders</div>
+            <div class="cultural-strip-card bg-[#D2691E]">Youth</div>
+        </div>
+    </div>
+</section>
+
+<div class="bg-gradient-to-r from-[#8B4513] to-[#D2691E] h-1"></div>
+
+<!-- ============= INTRO SECTION ============= -->
+<section class="py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-bold mb-4 text-[#8B4513]">Our Foundation</h2>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                Built on strong values and a commitment to the Ma'di people, our foundation guides everything we do.
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="feature-card cultural-card">
+                <div class="feature-icon text-[#8B4513]"><i class="ri-compass-discover-line"></i></div>
+                <h3 class="text-2xl font-bold mb-4 text-[#8B4513]">Our Mission</h3>
+                <p class="text-gray-600 leading-relaxed">
+                    To provide a framework for harnessing and promoting the rich and unique cultural, social and economic potentials of the Ma'di people for achieving prosperity and sustainable development.
+                </p>
+                <a href="/mission" class="inline-block mt-4 text-[#8B4513] font-bold hover:text-[#A0522D] transition no-underline">
+                    Learn More <i class="ri-arrow-right-line ml-2"></i>
+                </a>
+            </div>
+
+            <div class="feature-card cultural-card">
+                <div class="feature-icon text-[#8B4513]"><i class="ri-lightbulb-flash-line"></i></div>
+                <h3 class="text-2xl font-bold mb-4 text-[#8B4513]">Our Vision</h3>
+                <p class="text-gray-600 leading-relaxed">
+                    A culturally, socially and economically prosperous cohesive Ma'di community that derives capital and pride from its rich heritage and peaceful geo-cosmopolitan co-existence.
+                </p>
+                <a href="/mission" class="inline-block mt-4 text-[#8B4513] font-bold hover:text-[#A0522D] transition no-underline">
+                    Learn More <i class="ri-arrow-right-line ml-2"></i>
+                </a>
+            </div>
+
+            <div class="feature-card cultural-card">
+                <div class="feature-icon text-[#8B4513]"><i class="ri-heart-3-line"></i></div>
+                <h3 class="text-2xl font-bold mb-4 text-[#8B4513]">Our Values</h3>
+                <p class="text-gray-600 leading-relaxed">
+                    God Loving, Commitment, Honesty, Diligence, Fairness, Respect for Ma'di Culture, Mutual Respect, and Knowledge Sharing guide our work.
+                </p>
+                <a href="/mission" class="inline-block mt-4 text-[#8B4513] font-bold hover:text-[#A0522D] transition no-underline">
+                    Learn More <i class="ri-arrow-right-line ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============= FEATURED HIGHLIGHTS ============= -->
+<section class="py-20 bg-gradient-to-b from-[#F5E6D3] to-white">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="grid lg:grid-cols-2 gap-10 items-center">
+            <div>
+                <h2 class="text-4xl font-bold mb-6 text-[#8B4513]">A living heritage, a united people</h2>
+                <p class="text-lg text-gray-700 mb-6 leading-relaxed">
+                    MACDEF works to preserve Ma'di language, traditions, and identity while supporting community development, education, and social cohesion.
+                </p>
+                <div class="grid sm:grid-cols-2 gap-4">
+                    <div class="bg-white rounded-lg p-5 shadow-md border-l-4 border-[#8B4513]">
+                        <h4 class="font-bold text-[#8B4513] mb-2">Culture</h4>
+                        <p class="text-sm text-gray-600">Arts, language, ceremonies, and folklore</p>
+                    </div>
+                    <div class="bg-white rounded-lg p-5 shadow-md border-l-4 border-[#D2691E]">
+                        <h4 class="font-bold text-[#8B4513] mb-2">Community</h4>
+                        <p class="text-sm text-gray-600">Leadership, youth, and elders collaboration</p>
+                    </div>
+                    <div class="bg-white rounded-lg p-5 shadow-md border-l-4 border-[#CD853F]">
+                        <h4 class="font-bold text-[#8B4513] mb-2">Development</h4>
+                        <p class="text-sm text-gray-600">Education, livelihoods, and sustainability</p>
+                    </div>
+                    <div class="bg-white rounded-lg p-5 shadow-md border-l-4 border-[#A0522D]">
+                        <h4 class="font-bold text-[#8B4513] mb-2">Unity</h4>
+                        <p class="text-sm text-gray-600">Bringing Ma'di people together globally</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-3xl shadow-xl p-8 border border-gray-100">
+                <h3 class="text-3xl font-bold text-[#8B4513] mb-6">What We Do</h3>
+                <div class="space-y-5">
+                    <div class="flex gap-4 items-start">
+                        <div class="text-2xl text-[#D2691E]"><i class="ri-music-2-line"></i></div>
+                        <div>
+                            <h4 class="font-bold text-gray-900">Cultural Arts</h4>
+                            <p class="text-gray-600 text-sm">Music, dance, crafts, and traditional expression.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4 items-start">
+                        <div class="text-2xl text-[#D2691E]"><i class="ri-book-open-line"></i></div>
+                        <div>
+                            <h4 class="font-bold text-gray-900">Language & Learning</h4>
+                            <p class="text-gray-600 text-sm">Promoting Ma'di language and education.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4 items-start">
+                        <div class="text-2xl text-[#D2691E]"><i class="ri-global-line"></i></div>
+                        <div>
+                            <h4 class="font-bold text-gray-900">Community Mobilization</h4>
+                            <p class="text-gray-600 text-sm">Connecting communities locally and in the diaspora.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4 items-start">
+                        <div class="text-2xl text-[#D2691E]"><i class="ri-heart-2-line"></i></div>
+                        <div>
+                            <h4 class="font-bold text-gray-900">Welfare & Growth</h4>
+                            <p class="text-gray-600 text-sm">Supporting development and resilience initiatives.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============= EVENTS SECTION ============= -->
+<section class="py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-bold mb-4 text-[#8B4513]">Upcoming Events</h2>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                Join us for celebrations, educational workshops, and community gatherings that bring the Ma'di family together.
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8 mb-12">
+            <EventCard
+                Title="Annual Cultural Festival"
+                Date="June 15-17, 2024"
+                Description="The flagship event celebrating Ma'di heritage with traditional music, dance, food, crafts, and storytelling." />
+            <EventCard
+                Title="Youth Leadership Summit"
+                Date="July 22, 2024"
+                Description="Empowering young Ma'di leaders to take active roles in community development and cultural preservation." />
+            <EventCard
+                Title="Cultural Activities & Elders Council"
+                Date="August 10, 2024"
+                Description="Traditional narratives and wisdom sharing from our respected elders guiding the community." />
+            <EventCard
+                Title="Ma'di Language Classes"
+                Date="Every Saturday"
+                Description="Learn the beautiful Ma'di language from experienced community members in fun and engaging classes." />
+        </div>
+
+        <div class="text-center">
+            <a href="/events" class="inline-block bg-gradient-to-r from-[#8B4513] to-[#D2691E] text-white px-10 py-4 rounded-lg font-bold hover:shadow-lg transition transform hover:scale-105 no-underline">
+                <i class="ri-calendar-2-line mr-2"></i>View All Events
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ============= GALLERY PREVIEW SECTION ============= -->
+<section class="py-20 bg-gradient-to-b from-white to-[#F5E6D3]">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-bold mb-4 text-[#8B4513]">Community Moments</h2>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                Explore our vibrant cultural celebrations and community gatherings from recent events and activities.
+            </p>
+        </div>
+
+        <div class="gallery-grid">
+            @foreach(var photo in galleryItems)
+            {
+                <a href="/photo-gallery" class="gallery-item rounded-lg h-72 overflow-hidden hover:shadow-lg transition relative">
+                    <div class="absolute inset-0 flex items-center justify-center bg-[#8B4513]/90 text-white/90">
+                        <div class="text-center px-4">
+                            <i class="ri-image-add-line text-6xl block mb-3"></i>
+                            <p class="text-lg font-bold">@photo.Title</p>
+                        </div>
+                    </div>
+                </a>
+            }
+        </div>
+
+        <div class="text-center mt-12">
+            <a href="/photo-gallery" class="inline-block bg-gradient-to-r from-[#8B4513] to-[#D2691E] text-white px-10 py-4 rounded-lg font-bold hover:shadow-lg transition transform hover:scale-105 no-underline">
+                <i class="ri-image-gallery-line mr-2"></i>View Full Gallery
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ============= CTA SECTION ============= -->
+<section class="gradient-cultural cta-section">
+    <div class="cta-content">
+        <h2 class="text-4xl font-bold text-white mb-6">Join Our Community</h2>
+        <p class="text-xl text-gray-100 mb-8 max-w-2xl mx-auto">
+            Whether you're interested in cultural preservation, community development, or just want to connect with other Ma'di people globally, we welcome you to join us.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+            <a href="/contact" class="bg-white text-[#8B4513] px-10 py-4 rounded-lg font-bold hover:bg-gray-100 transition transform hover:scale-105 no-underline">
+                <i class="ri-mail-line mr-2"></i>Contact Us
+            </a>
+            <a href="/mission" class="border-2 border-white text-white px-10 py-4 rounded-lg font-bold hover:bg-white hover:text-[#8B4513] transition transform hover:scale-105 no-underline">
+                <i class="ri-arrow-right-line mr-2"></i>Learn More
+            </a>
+        </div>
+    </div>
+</section>
+
+@code {
+    private List<(string Title, string Icon)> galleryItems = new()
+    {
+        ("Cultural Festival Gathering", "ri-image-gallery-line"),
+        ("Traditional Performance Dancers", "ri-image-gallery-line"),
+        ("Community Feast Gathering", "ri-image-gallery-line"),
+        ("Ma'di Family Gathering", "ri-image-gallery-line"),
+        ("Ma'di Elders Council", "ri-image-gallery-line"),
+        ("Youth Cultural Activity", "ri-image-gallery-line"),
+    };
+}

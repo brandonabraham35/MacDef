@@ -1,0 +1,271 @@
+﻿@namespace MACDEF.Client.Components.Layout
+@inject NavigationManager Navigation
+
+<nav class="bg-white shadow-lg sticky top-0 z-50">
+    <div class="px-6 py-2">
+        <div class="flex items-center justify-between">
+            <a href="/" class="flex items-center">
+                <img src="macdef-logo.png" alt="MACDEF Logo" class="h-16" />
+            </a>
+
+            <!-- Mobile menu button -->
+            <button @onclick="ToggleMobileMenu" class="md:hidden flex items-center justify-center w-10 h-10 rounded hover:bg-gray-100">
+                <i class="@(mobileMenuOpen ? "ri-close-line" : "ri-menu-line") text-2xl text-gray-700"></i>
+            </button>
+
+            <!-- Desktop Navigation -->
+            <div class="@("nav-items hidden md:flex items-center space-x-8")">
+                <NavLink href="/" Match="NavLinkMatch.All" class="nav-link text-gray-700 hover:text-[#8B4513] transition-colors">
+                    Home
+                </NavLink>
+
+                <!-- About Us Dropdown -->
+                <div class="dropdown relative group">
+                    <button class="flex items-center space-x-1 text-gray-700 hover:text-[#8B4513] transition-colors pb-2">
+                        <span>About Us</span>
+                        <i class="ri-arrow-down-s-line"></i>
+                    </button>
+                    <div class="dropdown-menu absolute left-0 top-full w-56 bg-white shadow-xl rounded-lg py-2 hidden group-hover:block group-focus-within:block">
+                        <NavLink href="/mission" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#8B4513]">
+                            Mission & Vision
+                        </NavLink>
+                        <NavLink href="/goals" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#8B4513]">
+                            Goals
+                        </NavLink>
+                        <NavLink href="/organisational-structure" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#8B4513]">
+                            Organisational Structure
+                        </NavLink>
+                        <NavLink href="/leadership" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#8B4513]">
+                            Leadership
+                        </NavLink>
+                        <NavLink href="/history" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#8B4513]">
+                            History
+                        </NavLink>
+                    </div>
+                </div>
+
+                <!-- Culture Dropdown -->
+                <div class="dropdown relative group">
+                    <button class="flex items-center space-x-1 text-gray-700 hover:text-[#8B4513] transition-colors pb-2">
+                        <span>Culture</span>
+                        <i class="ri-arrow-down-s-line"></i>
+                    </button>
+                    <div class="dropdown-menu absolute left-0 top-full w-56 bg-white shadow-xl rounded-lg py-2 hidden group-hover:block group-focus-within:block">
+                        <NavLink href="/traditional-arts" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#8B4513]">
+                            Traditional Arts
+                        </NavLink>
+                        <NavLink href="/music-dance" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#8B4513]">
+                            Music & Dance
+                        </NavLink>
+                        <NavLink href="/ceremonies" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#8B4513]">
+                            Ceremonies
+                        </NavLink>
+                        <NavLink href="/language" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#8B4513]">
+                            Language
+                        </NavLink>
+                        <NavLink href="/folklore" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#8B4513]">
+                            Folklore
+                        </NavLink>
+                    </div>
+                </div>
+
+                <!-- Community Dropdown -->
+                <div class="dropdown relative group">
+                    <button class="flex items-center space-x-1 text-gray-700 hover:text-[#8B4513] transition-colors pb-2">
+                        <span>Community</span>
+                        <i class="ri-arrow-down-s-line"></i>
+                    </button>
+                    <div class="dropdown-menu absolute left-0 top-full w-52 bg-white shadow-xl rounded-lg py-2 hidden group-hover:block group-focus-within:block">
+                        <NavLink href="/events" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#8B4513]">
+                            Events
+                        </NavLink>
+                        <NavLink href="/stories" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#8B4513]">
+                            Stories
+                        </NavLink>
+                        <NavLink href="/youth-programs" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#8B4513]">
+                            Youth Programs
+                        </NavLink>
+                        <NavLink href="/elders-council" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#8B4513]">
+                            Elders Council
+                        </NavLink>
+                    </div>
+                </div>
+
+                <!-- Resources Dropdown -->
+                <div class="dropdown relative group">
+                    <button class="flex items-center space-x-1 text-gray-700 hover:text-[#8B4513] transition-colors pb-2">
+                        <span>Resources</span>
+                        <i class="ri-arrow-down-s-line"></i>
+                    </button>
+                    <div class="dropdown-menu absolute left-0 top-full w-48 bg-white shadow-xl rounded-lg py-2 hidden group-hover:block group-focus-within:block">
+                        <NavLink href="/photo-gallery" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#8B4513]">
+                            Photo Gallery
+                        </NavLink>
+                        <NavLink href="/documents" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#8B4513]">
+                            Documents
+                        </NavLink>
+                        <NavLink href="/research" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#8B4513]">
+                            Research
+                        </NavLink>
+                        <NavLink href="/library" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#8B4513]">
+                            Library
+                        </NavLink>
+                    </div>
+                </div>
+
+                <NavLink href="/contact" class="text-gray-700 hover:text-[#8B4513] transition-colors">
+                    Contact
+                </NavLink>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        @if (mobileMenuOpen)
+        {
+            <div class="md:hidden mt-4 pb-4 border-t pt-4">
+                <NavLink href="/" Match="NavLinkMatch.All" class="block py-2 px-4 text-gray-700 hover:bg-gray-50 hover:text-[#8B4513] rounded">
+                    Home
+                </NavLink>
+
+                <div class="py-2">
+                    <button @onclick="ToggleDropdown" class="w-full flex items-center justify-between px-4 py-2 text-gray-700 hover:bg-gray-50 rounded">
+                        <span>About Us</span>
+                        <i class="@(aboutUsOpen ? "ri-arrow-up-s-line" : "ri-arrow-down-s-line")"></i>
+                    </button>
+                    @if (aboutUsOpen)
+                    {
+                        <div class="bg-gray-50 ml-4">
+                            <NavLink href="/mission" class="block py-2 px-4 text-gray-700 hover:text-[#8B4513]">
+                                Mission & Vision
+                            </NavLink>
+                            <NavLink href="/goals" class="block py-2 px-4 text-gray-700 hover:text-[#8B4513]">
+                                Goals
+                            </NavLink>
+                            <NavLink href="/organisational-structure" class="block py-2 px-4 text-gray-700 hover:text-[#8B4513]">
+                                Organisational Structure
+                            </NavLink>
+                            <NavLink href="/leadership" class="block py-2 px-4 text-gray-700 hover:text-[#8B4513]">
+                                Leadership
+                            </NavLink>
+                            <NavLink href="/history" class="block py-2 px-4 text-gray-700 hover:text-[#8B4513]">
+                                History
+                            </NavLink>
+                        </div>
+                    }
+                </div>
+
+                <div class="py-2">
+                    <button @onclick="ToggleCultureDropdown" class="w-full flex items-center justify-between px-4 py-2 text-gray-700 hover:bg-gray-50 rounded">
+                        <span>Culture</span>
+                        <i class="@(cultureOpen ? "ri-arrow-up-s-line" : "ri-arrow-down-s-line")"></i>
+                    </button>
+                    @if (cultureOpen)
+                    {
+                        <div class="bg-gray-50 ml-4">
+                            <NavLink href="/traditional-arts" class="block py-2 px-4 text-gray-700 hover:text-[#8B4513]">
+                                Traditional Arts
+                            </NavLink>
+                            <NavLink href="/music-dance" class="block py-2 px-4 text-gray-700 hover:text-[#8B4513]">
+                                Music & Dance
+                            </NavLink>
+                            <NavLink href="/ceremonies" class="block py-2 px-4 text-gray-700 hover:bg-gray-50 hover:text-[#8B4513]">
+                                Ceremonies
+                            </NavLink>
+                            <NavLink href="/language" class="block py-2 px-4 text-gray-700 hover:text-[#8B4513]">
+                                Language
+                            </NavLink>
+                            <NavLink href="/folklore" class="block py-2 px-4 text-gray-700 hover:text-[#8B4513]">
+                                Folklore
+                            </NavLink>
+                        </div>
+                    }
+                </div>
+
+                <div class="py-2">
+                    <button @onclick="ToggleCommunityDropdown" class="w-full flex items-center justify-between px-4 py-2 text-gray-700 hover:bg-gray-50 rounded">
+                        <span>Community</span>
+                        <i class="@(communityOpen ? "ri-arrow-up-s-line" : "ri-arrow-down-s-line")"></i>
+                    </button>
+                    @if (communityOpen)
+                    {
+                        <div class="bg-gray-50 ml-4">
+                            <NavLink href="/events" class="block py-2 px-4 text-gray-700 hover:text-[#8B4513]">
+                                Events
+                            </NavLink>
+                            <NavLink href="/stories" class="block py-2 px-4 text-gray-700 hover:text-[#8B4513]">
+                                Stories
+                            </NavLink>
+                            <NavLink href="/youth-programs" class="block py-2 px-4 text-gray-700 hover:text-[#8B4513]">
+                                Youth Programs
+                            </NavLink>
+                            <NavLink href="/elders-council" class="block py-2 px-4 text-gray-700 hover:text-[#8B4513]">
+                                Elders Council
+                            </NavLink>
+                        </div>
+                    }
+                </div>
+
+                <div class="py-2">
+                    <button @onclick="ToggleResourcesDropdown" class="w-full flex items-center justify-between px-4 py-2 text-gray-700 hover:bg-gray-50 rounded">
+                        <span>Resources</span>
+                        <i class="@(resourcesOpen ? "ri-arrow-up-s-line" : "ri-arrow-down-s-line")"></i>
+                    </button>
+                    @if (resourcesOpen)
+                    {
+                        <div class="bg-gray-50 ml-4">
+                            <NavLink href="/photo-gallery" class="block py-2 px-4 text-gray-700 hover:text-[#8B4513]">
+                                Photo Gallery
+                            </NavLink>
+                            <NavLink href="/documents" class="block py-2 px-4 text-gray-700 hover:text-[#8B4513]">
+                                Documents
+                            </NavLink>
+                            <NavLink href="/research" class="block py-2 px-4 text-gray-700 hover:text-[#8B4513]">
+                                Research
+                            </NavLink>
+                            <NavLink href="/library" class="block py-2 px-4 text-gray-700 hover:text-[#8B4513]">
+                                Library
+                            </NavLink>
+                        </div>
+                    }
+                </div>
+
+                <NavLink href="/contact" class="block py-2 px-4 text-gray-700 hover:bg-gray-50 hover:text-[#8B4513] rounded">
+                    Contact
+                </NavLink>
+            </div>
+        }
+    </div>
+</nav>
+
+@code {
+    private bool mobileMenuOpen = false;
+    private bool aboutUsOpen = false;
+    private bool cultureOpen = false;
+    private bool communityOpen = false;
+    private bool resourcesOpen = false;
+
+    private void ToggleMobileMenu()
+    {
+        mobileMenuOpen = !mobileMenuOpen;
+    }
+
+    private void ToggleDropdown()
+    {
+        aboutUsOpen = !aboutUsOpen;
+    }
+
+    private void ToggleCultureDropdown()
+    {
+        cultureOpen = !cultureOpen;
+    }
+
+    private void ToggleCommunityDropdown()
+    {
+        communityOpen = !communityOpen;
+    }
+
+    private void ToggleResourcesDropdown()
+    {
+        resourcesOpen = !resourcesOpen;
+    }
+}

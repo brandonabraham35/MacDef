@@ -1,0 +1,150 @@
+﻿@page "/photo-gallery"
+@namespace MACDEF.Client.Pages
+
+<div class="bg-gradient-to-r from-[#8B4513] to-[#D2691E] text-white py-16">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+        <h1 class="text-4xl font-bold mb-4">Photo Gallery</h1>
+        <p class="text-lg text-gray-100">Moments from our community</p>
+    </div>
+</div>
+
+<main class="max-w-6xl mx-auto py-16 px-6">
+    <div class="mb-12">
+        <p class="text-lg text-gray-700 text-center">
+            Explore our collection of photos showcasing Ma'di cultural events, celebrations, and community gatherings.
+            Click on any photo to view it in full screen.
+        </p>
+    </div>
+
+    <!-- Gallery Grid -->
+    <div class="grid md:grid-cols-3 gap-6">
+        @foreach (var photo in galleryPhotos)
+        {
+            <div @onclick="@(() => OpenLightbox(photo))" class="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition cursor-pointer">
+                <img src="@photo.ImageUrl" alt="@photo.Title" class="w-full h-64 object-cover group-hover:scale-110 transition duration-300" />
+                <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition flex items-end p-4">
+                    <div class="text-white transform translate-y-full group-hover:translate-y-0 transition">
+                        <h3 class="font-bold text-lg">@photo.Title</h3>
+                        <p class="text-sm">@photo.Description</p>
+                        <p class="text-xs mt-1">@photo.Date</p>
+                    </div>
+                </div>
+                <div class="absolute top-4 right-4 bg-black bg-opacity-50 p-2 rounded opacity-0 group-hover:opacity-100 transition">
+                    <i class="ri-fullscreen-line text-white text-xl"></i>
+                </div>
+            </div>
+        }
+    </div>
+
+    <!-- Load More Button -->
+    <div class="text-center mt-12">
+        <button class="bg-[#8B4513] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#A0522D] transition">
+            Load More Photos
+        </button>
+    </div>
+</main>
+
+<!-- Lightbox Modal -->
+@if (showLightbox && selectedPhoto != null)
+{
+    <div class="fixed inset-0 bg-black bg-opacity-95 z-50 flex items-center justify-center p-4" @onclick="CloseLightbox">
+        <div class="relative max-w-4xl w-full h-full flex flex-col" @onclick:stopPropagation="true">
+            <!-- Close Button -->
+            <button @onclick="CloseLightbox" class="absolute -top-12 right-0 text-white text-4xl font-bold hover:text-gray-300 z-60">
+                <i class="ri-close-line"></i>
+            </button>
+
+            <!-- Image Container -->
+            <div class="flex-1 flex items-center justify-center overflow-auto">
+                <img src="@selectedPhoto.ImageUrl" alt="@selectedPhoto.Title" class="max-w-full max-h-full object-contain" />
+            </div>
+
+            <!-- Image Information -->
+            <div class="bg-black bg-opacity-75 text-white p-6 mt-4">
+                <h2 class="text-3xl font-bold mb-2">@selectedPhoto.Title</h2>
+                <p class="text-lg text-gray-300 mb-2">@selectedPhoto.Description</p>
+                <p class="text-sm text-gray-400">@selectedPhoto.Date</p>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="flex justify-between mt-4 gap-4">
+                <button @onclick="ShowPreviousPhoto" class="bg-[#8B4513] hover:bg-[#A0522D] text-white px-6 py-2 rounded-lg font-semibold transition flex items-center gap-2">
+                    <i class="ri-arrow-left-line"></i> Previous
+                </button>
+                <div class="text-white flex items-center gap-2">
+                    <span>@(currentPhotoIndex + 1) / @galleryPhotos.Count</span>
+                </div>
+                <button @onclick="ShowNextPhoto" class="bg-[#8B4513] hover:bg-[#A0522D] text-white px-6 py-2 rounded-lg font-semibold transition flex items-center gap-2">
+                    Next <i class="ri-arrow-right-line"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    private List<GalleryPhoto> galleryPhotos = new()
+    {
+        new() { Title = "Cultural Festival 2024", Description = "Ma'di community celebration with traditional performances and cultural displays", ImageUrl = "/images/gallery/IMG_0934.JPG", Date = "Recent Event" },
+        new() { Title = "Traditional Gathering", Description = "Community members participating in cultural activities and traditions", ImageUrl = "/images/gallery/IMG_0937.JPG", Date = "Recent Event" },
+        new() { Title = "Community Event", Description = "Ma'di people united in celebration and cultural preservation", ImageUrl = "/images/gallery/IMG_0954.JPG", Date = "Recent Event" },
+        new() { Title = "Cultural Performance", Description = "Traditional music and dance performances by community members", ImageUrl = "/images/gallery/IMG_0970.JPG", Date = "Recent Event" },
+        new() { Title = "Family Gathering", Description = "Families coming together to celebrate Ma'di heritage and culture", ImageUrl = "/images/gallery/IMG_0977.JPG", Date = "Recent Event" },
+        new() { Title = "Community Celebration", Description = "Vibrant gathering showcasing Ma'di cultural traditions and values", ImageUrl = "/images/gallery/IMG_0984.JPG", Date = "Recent Event" },
+        new() { Title = "Heritage Celebration", Description = "Participants engaged in meaningful cultural and community activities", ImageUrl = "/images/gallery/IMG_1006.JPG", Date = "Recent Event" },
+        new() { Title = "Cultural Moment", Description = "Community members sharing and celebrating Ma'di traditions together", ImageUrl = "/images/gallery/IMG_1007.JPG", Date = "Recent Event" },
+    };
+
+    private bool showLightbox = false;
+    private GalleryPhoto? selectedPhoto = null;
+    private int currentPhotoIndex = 0;
+
+    private void OpenLightbox(GalleryPhoto photo)
+    {
+        selectedPhoto = photo;
+        currentPhotoIndex = galleryPhotos.IndexOf(photo);
+        showLightbox = true;
+    }
+
+    private void CloseLightbox()
+    {
+        showLightbox = false;
+        selectedPhoto = null;
+    }
+
+    private void ShowNextPhoto()
+    {
+        if (currentPhotoIndex < galleryPhotos.Count - 1)
+        {
+            currentPhotoIndex++;
+            selectedPhoto = galleryPhotos[currentPhotoIndex];
+        }
+        else
+        {
+            currentPhotoIndex = 0;
+            selectedPhoto = galleryPhotos[0];
+        }
+    }
+
+    private void ShowPreviousPhoto()
+    {
+        if (currentPhotoIndex > 0)
+        {
+            currentPhotoIndex--;
+            selectedPhoto = galleryPhotos[currentPhotoIndex];
+        }
+        else
+        {
+            currentPhotoIndex = galleryPhotos.Count - 1;
+            selectedPhoto = galleryPhotos[currentPhotoIndex];
+        }
+    }
+
+    private class GalleryPhoto
+    {
+        public string Title { get; set; } = "";
+        public string Description { get; set; } = "";
+        public string ImageUrl { get; set; } = "";
+        public string Date { get; set; } = "";
+    }
+}

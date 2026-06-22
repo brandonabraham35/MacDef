@@ -1,0 +1,45 @@
+﻿@namespace MACDEF.Client.Components.Layout
+@inherits LayoutComponentBase
+@inject NavigationManager Navigation
+@inject IJSRuntime JS
+
+<div class="theme-shell @(isDarkTheme ? "theme-dark" : "theme-light") min-h-screen flex flex-col">
+    <NavBar IsDarkTheme="isDarkTheme" OnThemeToggle="ToggleTheme" />
+
+    <main class="flex-grow">
+        @Body
+    </main>
+
+    <Footer />
+</div>
+
+@code {
+    private bool isDarkTheme = true;
+    private bool themeLoaded;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender && !themeLoaded)
+        {
+            var storedTheme = await JS.InvokeAsync<string?>("macdefTheme.get");
+            if (storedTheme == "light")
+            {
+                isDarkTheme = false;
+                StateHasChanged();
+            }
+            else if (storedTheme == "dark")
+            {
+                isDarkTheme = true;
+                StateHasChanged();
+            }
+
+            themeLoaded = true;
+        }
+    }
+
+    private async Task ToggleTheme()
+    {
+        isDarkTheme = !isDarkTheme;
+        await JS.InvokeVoidAsync("macdefTheme.set", isDarkTheme ? "dark" : "light");
+    }
+}

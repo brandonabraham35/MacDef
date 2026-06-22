@@ -1,0 +1,109 @@
+is_global = true
+build_property.EnableAotAnalyzer =
+build_property.EnableSingleFileAnalyzer =
+build_property.EnableTrimAnalyzer = false
+build_property.IncludeAllContentForSelfExtract =
+build_property.VerifyReferenceTrimCompatibility =
+build_property.VerifyReferenceAotCompatibility =
+build_property.TargetFramework = net10.0
+build_property.TargetFrameworkIdentifier = .NETCoreApp
+build_property.TargetFrameworkVersion = v10.0
+build_property.TargetPlatformMinVersion =
+build_property.UsingMicrosoftNETSdkWeb =
+build_property.ProjectTypeGuids =
+build_property.InvariantGlobalization = false
+build_property.PlatformNeutralAssembly =
+build_property.EnforceExtendedAnalyzerRules =
+build_property._SupportedPlatformList = browser
+build_property.RootNamespace = MACDEF.Client
+build_property.RootNamespace = MACDEF.Client
+build_property.ProjectDir = C:\Users\danie\Desktop\ASP.NET\MACDEF\MACDEF\MACDEF.Client\
+build_property.EnableComHosting =
+build_property.EnableGeneratedComInterfaceComImportInterop = false
+build_property.RazorLangVersion = 9.0
+build_property.SupportLocalizedComponentNames =
+build_property.GenerateRazorMetadataSourceChecksumAttributes =
+build_property.MSBuildProjectDirectory = C:\Users\danie\Desktop\ASP.NET\MACDEF\MACDEF\MACDEF.Client
+build_property._RazorSourceGeneratorDebug =
+build_property.EffectiveAnalysisLevelStyle = 10.0
+build_property.EnableCodeStyleSeverity =
+
+[C:/Users/danie/Desktop/ASP.NET/MACDEF/MACDEF/MACDEF.Client/App.razor]
+build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
+build_metadata.AdditionalFiles.CssScope =
+
+[C:/Users/danie/Desktop/ASP.NET/MACDEF/MACDEF/MACDEF.Client/Components/EventCard.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xFdmVudENhcmQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope =
+
+[C:/Users/danie/Desktop/ASP.NET/MACDEF/MACDEF/MACDEF.Client/Components/GoalCard.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xHb2FsQ2FyZC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope =
+
+[C:/Users/danie/Desktop/ASP.NET/MACDEF/MACDEF/MACDEF.Client/Components/Layout/Footer.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcRm9vdGVyLnJhem9y
+build_metadata.AdditionalFiles.CssScope =
+
+[C:/Users/danie/Desktop/ASP.NET/MACDEF/MACDEF/MACDEF.Client/Components/Layout/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTWFpbkxheW91dC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope =
+
+[C:/Users/danie/Desktop/ASP.NET/MACDEF/MACDEF/MACDEF.Client/Components/Layout/NavBar.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTmF2QmFyLnJhem9y
+build_metadata.AdditionalFiles.CssScope =
+
+[C:/Users/danie/Desktop/ASP.NET/MACDEF/MACDEF/MACDEF.Client/Components/TimelineItem.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xUaW1lbGluZUl0ZW0ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope =
+
+[C:/Users/danie/Desktop/ASP.NET/MACDEF/MACDEF/MACDEF.Client/Pages/AdminContactSubmissions.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5Db250YWN0U3VibWlzc2lvbnMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope =
+
+[C:/Users/danie/Desktop/ASP.NET/MACDEF/MACDEF/MACDEF.Client/Pages/Contact.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29udGFjdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope =
+
+[C:/Users/danie/Desktop/ASP.NET/MACDEF/MACDEF/MACDEF.Client/Pages/ContentPages.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29udGVudFBhZ2VzLnJhem9y
+build_metadata.AdditionalFiles.CssScope =
+
+[C:/Users/danie/Desktop/ASP.NET/MACDEF/MACDEF/MACDEF.Client/Pages/Counter.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291bnRlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope =
+
+[C:/Users/danie/Desktop/ASP.NET/MACDEF/MACDEF/MACDEF.Client/Pages/Events.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZlbnRzLnJhem9y
+build_metadata.AdditionalFiles.CssScope =
+
+[C:/Users/danie/Desktop/ASP.NET/MACDEF/MACDEF/MACDEF.Client/Pages/Goals.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR29hbHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope =
+
+[C:/Users/danie/Desktop/ASP.NET/MACDEF/MACDEF/MACDEF.Client/Pages/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
+build_metadata.AdditionalFiles.CssScope =
+
+[C:/Users/danie/Desktop/ASP.NET/MACDEF/MACDEF/MACDEF.Client/Pages/Mission.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWlzc2lvbi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope =
+
+[C:/Users/danie/Desktop/ASP.NET/MACDEF/MACDEF/MACDEF.Client/Pages/OrganisationalStructure.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcT3JnYW5pc2F0aW9uYWxTdHJ1Y3R1cmUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope =
+
+[C:/Users/danie/Desktop/ASP.NET/MACDEF/MACDEF/MACDEF.Client/Pages/PhotoGallery.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGhvdG9HYWxsZXJ5LnJhem9y
+build_metadata.AdditionalFiles.CssScope =
+
+[C:/Users/danie/Desktop/ASP.NET/MACDEF/MACDEF/MACDEF.Client/Pages/Privacy.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJpdmFjeS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope =
+
+[C:/Users/danie/Desktop/ASP.NET/MACDEF/MACDEF/MACDEF.Client/Routes.razor]
+build_metadata.AdditionalFiles.TargetPath = Um91dGVzLnJhem9y
+build_metadata.AdditionalFiles.CssScope =
+
+[C:/Users/danie/Desktop/ASP.NET/MACDEF/MACDEF/MACDEF.Client/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope =

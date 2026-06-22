@@ -1,0 +1,114 @@
+﻿@page "/mission"
+@namespace MACDEF.Client.Pages
+
+<div class="bg-gradient-to-r from-[#8B4513] to-[#D2691E] text-white py-16">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+        <h1 class="text-4xl font-bold mb-4">Mission & Vision</h1>
+        <p class="text-lg text-gray-100">Guiding principles of MACDEF</p>
+    </div>
+</div>
+
+<main class="max-w-4xl mx-auto py-16 px-6">
+    <!-- Mission Section -->
+    <section class="mb-16">
+        <div class="flex gap-8 items-start mb-8">
+            <div class="text-6xl text-[#8B4513] flex-shrink-0">
+                <i class="ri-target-2-line"></i>
+            </div>
+            <div>
+                <h2 class="text-4xl font-bold mb-6 text-gray-900">Our Mission</h2>
+                <p class="text-lg text-gray-700 leading-relaxed mb-4">
+                    The Madi Cultural Development Foundation (MACDEF) is dedicated to the preservation, promotion, and celebration of Madi cultural heritage.
+                    We work to ensure that Madi traditions, languages, customs, and values are preserved for future generations while fostering community engagement
+                    and sustainable development.
+                </p>
+                <p class="text-lg text-gray-700 leading-relaxed">
+                    Our mission extends to creating platforms for cultural expression, supporting educational initiatives, and building bridges between
+                    traditional knowledge and contemporary challenges facing the Madi community.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vision Section -->
+    <section class="mb-16">
+        <div class="flex gap-8 items-start mb-8 flex-row-reverse">
+            <div class="text-6xl text-[#D2691E] flex-shrink-0">
+                <i class="ri-lightbulb-flash-line"></i>
+            </div>
+            <div>
+                <h2 class="text-4xl font-bold mb-6 text-gray-900">Our Vision</h2>
+                <p class="text-lg text-gray-700 leading-relaxed mb-4">
+                    We envision a vibrant and thriving Madi community where cultural traditions are deeply valued, actively transmitted to younger generations,
+                    and thoughtfully integrated into modern society. A community where pride in heritage strengthens social cohesion and contributes to
+                    sustainable development.
+                </p>
+                <p class="text-lg text-gray-700 leading-relaxed">
+                    We see a future where Madi language, arts, music, and wisdom are recognized as invaluable resources that enhance the cultural diversity
+                    of the wider society and inspire global appreciation for African heritage.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Values -->
+    <section class="bg-gray-100 rounded-lg p-12 mb-16">
+        <h2 class="text-4xl font-bold mb-12 text-center text-gray-900">Core Values</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-2xl font-bold text-[#8B4513] mb-3 flex items-center">
+                    <i class="ri-heart-fill mr-3"></i> Cultural Pride
+                </h3>
+                <p class="text-gray-700">
+                    We celebrate Madi heritage with pride and inspire others to recognize the value of our cultural traditions.
+                </p>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-2xl font-bold text-[#8B4513] mb-3 flex items-center">
+                    <i class="ri-group-fill mr-3"></i> Community Unity
+                </h3>
+                <p class="text-gray-700">
+                    We foster strong bonds within the Madi community and promote cooperation across generations.
+                </p>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-2xl font-bold text-[#8B4513] mb-3 flex items-center">
+                    <i class="ri-book-open-fill mr-3"></i> Educational Excellence
+                </h3>
+                <p class="text-gray-700">
+                    We are committed to promoting knowledge, learning, and understanding of Madi culture and history.
+                </p>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-2xl font-bold text-[#8B4513] mb-3 flex items-center">
+                    <i class="ri-leaf-fill mr-3"></i> Sustainability
+                </h3>
+                <p class="text-gray-700">
+                    We are dedicated to ensuring cultural preservation and development that benefits all generations.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="text-center">
+        <h2 class="text-3xl font-bold mb-6 text-gray-900">Join Our Mission</h2>
+        <p class="text-lg text-gray-700 mb-8">
+            Be part of a community dedicated to preserving and celebrating Madi heritage.
+        </p>
+        <div class="flex justify-center gap-4">
+            <a href="/contact" class="bg-[#8B4513] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#A0522D] transition">
+                Get Involved
+            </a>
+            <a href="/goals" class="border-2 border-[#8B4513] text-[#8B4513] px-8 py-3 rounded-lg font-semibold hover:bg-[#8B4513] hover:text-white transition">
+                Our Goals
+            </a>
+        </div>
+    </section>
+</main>
+
+@code {
+}

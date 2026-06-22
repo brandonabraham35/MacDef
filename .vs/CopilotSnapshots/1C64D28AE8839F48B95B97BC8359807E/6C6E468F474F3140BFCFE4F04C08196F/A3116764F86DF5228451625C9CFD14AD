@@ -1,0 +1,99 @@
+﻿@page "/"
+@namespace MACDEF.Client.Pages
+
+<div class="bg-gradient-to-r from-[#8B4513] to-[#D2691E] text-white py-20">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+        <h1 class="text-5xl font-bold mb-4">Welcome to MACDEF</h1>
+        <p class="text-xl text-gray-100 mb-8">
+            Madi Cultural Development Foundation - Preserving Heritage, Building Community
+        </p>
+        <div class="flex justify-center gap-4">
+            <a href="/about" class="bg-white text-[#8B4513] px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition">
+                Learn More
+            </a>
+            <a href="/contact" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-[#8B4513] transition">
+                Get In Touch
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Featured Section -->
+<section class="max-w-6xl mx-auto px-6 py-16">
+    <div class="grid md:grid-cols-3 gap-8">
+        <!-- Mission -->
+        <div class="bg-white rounded-lg shadow-lg p-8 hover:shadow-xl transition">
+            <div class="text-4xl text-[#8B4513] mb-4">
+                <i class="ri-target-2-line"></i>
+            </div>
+            <h3 class="text-2xl font-bold mb-4">Our Mission</h3>
+            <p class="text-gray-600">
+                To preserve, promote, and celebrate Madi cultural heritage while fostering community engagement and sustainable development.
+            </p>
+        </div>
+
+        <!-- Vision -->
+        <div class="bg-white rounded-lg shadow-lg p-8 hover:shadow-xl transition">
+            <div class="text-4xl text-[#8B4513] mb-4">
+                <i class="ri-lightbulb-flash-line"></i>
+            </div>
+            <h3 class="text-2xl font-bold mb-4">Our Vision</h3>
+            <p class="text-gray-600">
+                A vibrant Madi community where cultural traditions are valued, transmitted to future generations, and integrated into modern society.
+            </p>
+        </div>
+
+        <!-- Values -->
+        <div class="bg-white rounded-lg shadow-lg p-8 hover:shadow-xl transition">
+            <div class="text-4xl text-[#8B4513] mb-4">
+                <i class="ri-heart-line"></i>
+            </div>
+            <h3 class="text-2xl font-bold mb-4">Our Values</h3>
+            <p class="text-gray-600">
+                Cultural pride, community unity, educational excellence, and sustainable cultural preservation for all generations.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Latest Events Section -->
+<section class="bg-gray-100 py-16">
+    <div class="max-w-6xl mx-auto px-6">
+        <h2 class="text-4xl font-bold mb-12 text-center">Upcoming Events</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+            <EventCard Title="Cultural Festival 2024" Date="June 15-17, 2024" Description="Annual celebration of Madi traditions, music, dance, and cuisine." />
+            <EventCard Title="Youth Leadership Summit" Date="July 22, 2024" Description="Empowering young Madi leaders to take active roles in community development." />
+            <EventCard Title="Elder's Storytelling Night" Date="August 10, 2024" Description="Traditional narratives and wisdom sharing from community elders." />
+            <EventCard Title="Language Classes" Date="Every Saturday" Description="Learn the Madi language from experienced community members." />
+        </div>
+        <div class="text-center mt-12">
+            <a href="/events" class="bg-[#8B4513] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#A0522D] transition">
+                View All Events
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Gallery Preview -->
+<section class="max-w-6xl mx-auto px-6 py-16">
+    <h2 class="text-4xl font-bold mb-12 text-center">Community Moments</h2>
+    <div class="grid md:grid-cols-3 gap-6">
+        <div class="bg-gray-300 rounded-lg h-64 flex items-center justify-center overflow-hidden hover:shadow-lg transition">
+            <img src="placeholder-1.jpg" alt="Community event" class="w-full h-full object-cover hover:scale-105 transition" />
+        </div>
+        <div class="bg-gray-300 rounded-lg h-64 flex items-center justify-center overflow-hidden hover:shadow-lg transition">
+            <img src="placeholder-2.jpg" alt="Cultural performance" class="w-full h-full object-cover hover:scale-105 transition" />
+        </div>
+        <div class="bg-gray-300 rounded-lg h-64 flex items-center justify-center overflow-hidden hover:shadow-lg transition">
+            <img src="placeholder-3.jpg" alt="Community gathering" class="w-full h-full object-cover hover:scale-105 transition" />
+        </div>
+    </div>
+    <div class="text-center mt-8">
+        <a href="/photo-gallery" class="bg-[#8B4513] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#A0522D] transition">
+            View Full Gallery
+        </a>
+    </div>
+</section>
+
+@code {
+}

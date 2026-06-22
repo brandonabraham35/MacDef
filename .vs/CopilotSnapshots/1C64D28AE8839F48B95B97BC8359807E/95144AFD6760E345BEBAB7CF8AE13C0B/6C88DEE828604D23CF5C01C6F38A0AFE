@@ -1,0 +1,93 @@
+﻿using System.Text.Json;
+
+namespace MACDEF.Shared;
+
+public record ContactSubmissionRequest(string FirstName, string LastName, string Email, string? Phone, string Subject, string Message);
+public record ContactSubmissionResponse(bool Success, string Message);
+public record ContactSubmissionEntry(string Id, string FirstName, string LastName, string Email, string? Phone, string Subject, string Message, DateTimeOffset CreatedUtc);
+
+public sealed class SmtpOptions
+{
+    public string? Host { get; set; }
+    public int Port { get; set; } = 587;
+    public bool UseSsl { get; set; } = true;
+    public string? Username { get; set; }
+    public string? Password { get; set; }
+    public string? FromAddress { get; set; }
+    public string? ToAddress { get; set; }
+
+    public bool IsConfigured =>
+        !string.IsNullOrWhiteSpace(Host) &&
+        !string.IsNullOrWhiteSpace(FromAddress) &&
+        !string.IsNullOrWhiteSpace(ToAddress);
+}
+
+public sealed class AdminAccessOptions
+{
+    public string HeaderName { get; set; } = "X-MACDEF-Admin-Key";
+    public string Secret { get; set; } = string.Empty;
+    public bool IsConfigured => !string.IsNullOrWhiteSpace(Secret);
+}
+
+public sealed class ContactSubmissionStore
+{
+    private static readonly SemaphoreSlim Gate = new(1, 1);
+    private readonly string storagePath;
+    private static readonly JsonSerializerOptions JsonOptions = new() { WriteIndented = true };
+
+    public ContactSubmissionStore(IWebHostEnvironment environment)
+    {
+        var storageDirectory = Path.Combine(environment.ContentRootPath, "App_Data");
+        Directory.CreateDirectory(storageDirectory);
+        storagePath = Path.Combine(storageDirectory, "contact-submissions.json");
+    }
+
+    public async Task AddAsync(ContactSubmissionEntry entry)
+    {
+        await Gate.WaitAsync();
+        try
+        {
+            var items = await LoadAsync();
+            items.Insert(0, entry);
+            await File.WriteAllTextAsync(storagePath, JsonSerializer.Serialize(items, JsonOptions));
+        }
+        finally
+        {
+            Gate.Release();
+        }
+    }
+
+    public async Task<IReadOnlyList<ContactSubmissionEntry>> GetAllAsync()
+    {
+        await Gate.WaitAsync();
+        try
+        {
+            return await LoadAsync();
+        }
+        finally
+        {
+            Gate.Release();
+        }
+    }
+
+    private async Task<List<ContactSubmissionEntry>> LoadAsync()
+    {
+        if (!File.Exists(storagePath))
+        {
+            return [];
+        }
+
+        var json = await File.ReadAllTextAsync(storagePath);
+        return JsonSerializer.Deserialize<List<ContactSubmissionEntry>>(json) ?? [];
+    }
+}
+
+public class ContactSubmissionFormRequest
+{
+    public string FirstName { get; set; } = string.Empty;
+    public string LastName { get; set; } = string.Empty;
+    public string Email { get; set; } = string.Empty;
+    public string? Phone { get; set; }
+    public string Subject { get; set; } = string.Empty;
+    public string Message { get; set; } = string.Empty;
+}

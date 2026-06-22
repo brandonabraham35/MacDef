@@ -1,0 +1,22 @@
+﻿{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    }
+  },
+  "AllowedHosts": "*",
+  "Smtp": {
+    "Host": "",
+    "Port": 587,
+    "UseSsl": true,
+    "Username": "",
+    "Password": "",
+    "FromAddress": "",
+    "ToAddress": "macdef2013@gmail.com"
+  },
+  "AdminAccess": {
+    "HeaderName": "X-MACDEF-Admin-Key",
+    "Secret": ""
+  }
+}

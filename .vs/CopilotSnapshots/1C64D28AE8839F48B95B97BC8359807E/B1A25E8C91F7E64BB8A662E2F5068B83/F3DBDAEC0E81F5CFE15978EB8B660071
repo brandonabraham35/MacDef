@@ -1,0 +1,158 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MACDEF - Madi Cultural Development Foundation</title>
+    <meta name="description" content="MACDEF - Madi Cultural Development Foundation. Preserving heritage, building community." />
+    <meta name="theme-color" content="#8B4513" />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#8B4513',
+                        'primary-light': '#A0522D',
+                        secondary: '#D2691E',
+                        accent: '#CD853F'
+                    },
+                    borderRadius: {
+                        'button': '8px'
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Pacifico&display=swap" rel="stylesheet" />
+
+    <!-- Remix Icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="app.css" />
+
+    <base href="/" />
+    <link href="MACDEF.Client.styles.css" rel="stylesheet" />
+
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        #app-loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #8B4513 0%, #D2691E 100%);
+            font-family: 'Inter', sans-serif;
+            flex-direction: column;
+        }
+
+        .spinner {
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top: 4px solid white;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .loading-text {
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .error-text {
+            color: #FFE4C4;
+            font-size: 14px;
+            margin-top: 20px;
+            text-align: center;
+            max-width: 80%;
+        }
+
+        #app {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-inter">
+    <div id="app">
+        <div id="app-loading">
+            <div class="spinner"></div>
+            <div class="loading-text">Loading MACDEF...</div>
+            <div class="error-text" id="error-message" style="display:none;"></div>
+        </div>
+    </div>
+
+    <script src="_framework/blazor.web.js"></script>
+
+    <script>
+        console.log('Page loaded, waiting for Blazor...');
+
+        // Remove loading indicator when Blazor is ready
+        document.addEventListener('blazor:load', function () {
+            console.log('Blazor loaded');
+            const loading = document.getElementById('app-loading');
+            if (loading) {
+                loading.style.display = 'none';
+            }
+        });
+
+        // Handle Blazor initialization error
+        document.addEventListener('blazor:error', function (e) {
+            console.error('Blazor error:', e);
+            const errorDiv = document.getElementById('error-message');
+            if (errorDiv) {
+                errorDiv.style.display = 'block';
+                errorDiv.textContent = 'Error loading application. Check browser console for details.';
+            }
+        });
+
+        // Timeout in case Blazor takes too long
+        setTimeout(function () {
+            const loading = document.getElementById('app-loading');
+            if (loading && loading.style.display !== 'none') {
+                console.warn('Blazor load timeout - checking app status');
+                // App might still be loading, but let's check if there's content
+                const appDiv = document.getElementById('app');
+                if (appDiv && appDiv.children.length > 1) {
+                    loading.style.display = 'none';
+                }
+            }
+        }, 10000); // 10 second timeout
+
+        // Log any global errors
+        window.addEventListener('error', function (e) {
+            console.error('Global error:', e.message, e.filename, e.lineno, e.colno, e.error);
+        });
+
+        // Log promise rejections
+        window.addEventListener('unhandledrejection', function (e) {
+            console.error('Unhandled rejection:', e.reason);
+        });
+    </script>
+</body>
+</html>

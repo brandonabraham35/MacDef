@@ -1,0 +1,4 @@
+[Mon Jun 22 00:50:17 2026] PHP 8.3.6 Development Server (http://localhost:8000) started
+[Mon Jun 22 00:50:19 2026] [::1]:44748 Accepted
+[Mon Jun 22 00:50:19 2026] [::1]:44748 [404]: HEAD /index.php - No such file or directory
+[Mon Jun 22 00:50:19 2026] [::1]:44748 Closing
