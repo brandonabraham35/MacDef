@@ -82,6 +82,18 @@ $msg = $_GET['msg'] ?? '';
                         </div>
                     </div>
 
+                    <?php if ($hours = getSetting('office_hours')): ?>
+                    <div class="d-flex mb-4">
+                        <div class="me-3">
+                            <i class="ri-time-fill fs-3 text-gold"></i>
+                        </div>
+                        <div>
+                            <h5 class="mb-1">Office Hours</h5>
+                            <p class="opacity-75 mb-0"><?= e($hours) ?></p>
+                        </div>
+                    </div>
+                    <?php endif; ?>
+
                     <div class="mt-5">
                         <h5 class="mb-3">Follow Us</h5>
                         <div class="footer-social d-flex">
@@ -94,5 +106,17 @@ $msg = $_GET['msg'] ?? '';
             </div>
         </div>
     </div>
+
+    <?php if ($map = getSetting('google_maps_embed')): ?>
+    <div class="container-fluid px-0 mt-5">
+        <?php if (strpos($map, '<iframe') !== false): ?>
+            <div class="ratio ratio-21x9">
+                <?= $map ?>
+            </div>
+        <?php else: ?>
+            <iframe src="<?= e($map) ?>" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        <?php endif; ?>
+    </div>
+    <?php endif; ?>
 </main>
 <?php require_once __DIR__ . '/includes/footer.php'; ?>
