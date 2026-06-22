@@ -1,17 +1,19 @@
+<?php
+$footer = db()->query("SELECT * FROM footer_settings WHERE id=1")->fetch();
+?>
 <footer class="footer">
     <div class="container pb-5">
         <div class="row g-4">
             <div class="col-lg-4">
                 <div class="footer-logo">
-                    <img src="assets/images/macdef-logo.png" alt="MACDEF Logo">
+                    <img src="<?= e(!empty($footer['footer_logo']) ? $footer['footer_logo'] : 'assets/images/macdef-logo.png') ?>" alt="MACDEF Logo">
                 </div>
-                <p class="text-muted mb-4">Ma'di Cultural and Development Foundation is dedicated to preserving heritage, empowering communities, and building a prosperous future for the Ma'di people.</p>
+                <p class="text-muted mb-4"><?= e($footer['footer_description'] ?? "Ma'di Cultural and Development Foundation is dedicated to preserving heritage, empowering communities, and building a prosperous future for the Ma'di people.") ?></p>
                 <div class="footer-social">
-                    <a href="<?= e(getSetting('facebook_url', '#')) ?>"><i class="ri-facebook-fill"></i></a>
-                    <a href="<?= e(getSetting('instagram_url', '#')) ?>"><i class="ri-instagram-line"></i></a>
-                    <a href="<?= e(getSetting('twitter_url', '#')) ?>"><i class="ri-twitter-x-fill"></i></a>
-                    <a href="#"><i class="ri-linkedin-fill"></i></a>
-                    <a href="#"><i class="ri-youtube-fill"></i></a>
+                    <?php if(!empty($footer['social_facebook'])): ?><a href="<?= e($footer['social_facebook']) ?>"><i class="ri-facebook-fill"></i></a><?php endif; ?>
+                    <?php if(!empty($footer['social_instagram'])): ?><a href="<?= e($footer['social_instagram']) ?>"><i class="ri-instagram-line"></i></a><?php endif; ?>
+                    <?php if(!empty($footer['social_twitter'])): ?><a href="<?= e($footer['social_twitter']) ?>"><i class="ri-twitter-x-fill"></i></a><?php endif; ?>
+                    <?php if(!empty($footer['social_linkedin'])): ?><a href="<?= e($footer['social_linkedin']) ?>"><i class="ri-linkedin-fill"></i></a><?php endif; ?>
                 </div>
             </div>
             <div class="col-lg-2 offset-lg-1">
@@ -37,15 +39,15 @@
                 <ul class="footer-links list-unstyled">
                     <li class="text-muted mb-3">
                         <i class="ri-map-pin-line me-2 text-gold"></i>
-                        <?= e(getSetting('contact_address', 'Uganda')) ?>
+                        <?= e(!empty($footer['address']) ? $footer['address'] : getSetting('contact_address', 'Uganda')) ?>
                     </li>
                     <li class="text-muted mb-3">
                         <i class="ri-mail-line me-2 text-gold"></i>
-                        Email: <?= e(getSetting('contact_email', 'info@macdef.org')) ?>
+                        Email: <?= e(!empty($footer['email']) ? $footer['email'] : getSetting('contact_email', 'info@macdef.org')) ?>
                     </li>
                     <li class="text-muted">
                         <i class="ri-phone-line me-2 text-gold"></i>
-                        Phone: <?= e(getSetting('contact_phone', '+256 000 000 000')) ?>
+                        Phone: <?= e(!empty($footer['phone']) ? $footer['phone'] : getSetting('contact_phone', '+256 000 000 000')) ?>
                     </li>
                 </ul>
             </div>
@@ -55,7 +57,7 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-6 text-center text-md-start">
-                    <p class="mb-0 text-muted">Copyright &copy; <?= date('Y') ?> <?= e($site_name) ?>. All Rights Reserved</p>
+                    <p class="mb-0 text-muted"><?= e($footer['copyright_text'] ?? "Copyright &copy; " . date('Y') . " " . $site_name . ". All Rights Reserved") ?></p>
                 </div>
                 <div class="col-md-6 text-center text-md-end">
                     <ul class="list-inline mb-0">
