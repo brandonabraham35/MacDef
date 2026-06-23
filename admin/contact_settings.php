@@ -3,6 +3,8 @@ require_once dirname(__DIR__).'/includes/auth.php';
 require_login();
 
 $keys = [
+    'contact_hero_title',
+    'contact_hero_subtitle',
     'contact_address',
     'contact_phone',
     'contact_email',
@@ -34,6 +36,19 @@ unset($_SESSION['flash'], $_SESSION['flash_err']);
 
 <form method="post" class="panel resource-form">
     <?= csrf_field() ?>
+
+    <h3>Contact Hero Section</h3>
+    <div class="form-field">
+        <label>Hero Title</label>
+        <input type="text" name="contact_hero_title" value="<?= e(getSetting('contact_hero_title', 'Get In Touch With MACDEF')) ?>">
+    </div>
+    <div class="form-field">
+        <label>Hero Subtitle</label>
+        <textarea name="contact_hero_subtitle" rows="3"><?= e(getSetting('contact_hero_subtitle', 'We would love to hear from you. Contact us, support our mission, or partner with us in preserving culture and community development.')) ?></textarea>
+    </div>
+
+    <hr style="margin: 30px 0; border-color: #eee;">
+
     <h3>Contact Information & Map</h3>
     <div class="form-field">
         <label>Physical Address</label>
