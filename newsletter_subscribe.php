@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/includes/db.php';
 require_once __DIR__ . '/includes/functions.php';
+require_once __DIR__ . '/includes/EmailService.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = sanitize($_POST['name'] ?? '');
@@ -14,6 +15,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
         $stmt = db()->prepare("INSERT INTO newsletter_subscribers (name, email) VALUES (?, ?) ON DUPLICATE KEY UPDATE status = 'Subscribed'");
         $stmt->execute([$name, $email]);
+
+        // Send Notification to Admin
+        EmailService::sendAdminNotification('New Newsletter Subscriber', [
+            'Name' => $name,
+            'Email' => $email
+        ]);
+
+        // Send Confirmation to User
+        EmailService::sendUserConfirmation($email, $name, 'Newsletter Subscription');
+
         header('Location: index.php?status=success&msg=Thank you for subscribing to our newsletter!');
     } catch (Exception $e) {
         header('Location: index.php?status=error&msg=Sorry, we could not process your subscription.');
