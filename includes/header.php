@@ -42,14 +42,6 @@ $site_title = getSetting('site_title', 'Ma\'di Cultural and Development Foundati
                     <li class="list-inline-item me-4"><a href="events-calendar.php"><i class="ri-calendar-event-line me-1"></i> Events Calendar</a></li>
                     <li class="list-inline-item me-4"><a href="#newsletter-section"><i class="ri-mail-send-line me-1"></i> Newsletter</a></li>
                     <li class="list-inline-item me-4"><a href="contact.php"><i class="ri-contacts-line me-1"></i> Contact Us</a></li>
-                    <li class="list-inline-item">
-                        <form action="search.php" method="GET" class="d-inline-block">
-                            <div class="input-group input-group-sm">
-                                <input type="text" name="q" class="form-control form-control-sm border-0" placeholder="Search..." style="background: rgba(255,255,255,0.1); color: white;">
-                                <button class="btn btn-sm btn-gold" type="submit"><i class="ri-search-line"></i></button>
-                            </div>
-                        </form>
-                    </li>
                 </ul>
             </div>
         </div>

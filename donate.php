@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['donate_submit'])) {
         $donor_id = db()->lastInsertId();
 
         // Send Emails
-        $emailService = new EmailService();
+        
 
         // To Admin
         $admin_body = "<h3>New Donation Interest</h3>
@@ -31,14 +31,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['donate_submit'])) {
                        <p><strong>Type:</strong> $type</p>
                        <p><strong>Amount:</strong> $amount</p>
                        <p><strong>Message:</strong> $message</p>";
-        $emailService->send(ADMIN_EMAIL, "New Donation: $name", $admin_body);
+        EmailService::sendEmail(ADMIN_EMAIL, "New Donation: $name", $admin_body);
 
         // To Donor
         $donor_body = "<h3>Thank You for Your Support!</h3>
                        <p>Dear $name,</p>
                        <p>We have received your donation interest of <strong>$type</strong>. Our team will contact you shortly with further instructions.</p>
                        <p>Thank you for supporting MACDEF and the Ma'di community.</p>";
-        $emailService->send($email, "Thank You for Supporting MACDEF", $donor_body);
+        EmailService::sendEmail($email, "Thank You for Supporting MACDEF", $donor_body);
 
         $status = 'success';
         $msg = 'Thank you for your interest in supporting MACDEF! We have sent a confirmation email to you.';
