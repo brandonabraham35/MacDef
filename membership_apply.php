@@ -1,6 +1,7 @@
 <?php
 $page_title = 'Membership Application';
 require_once __DIR__ . '/includes/header.php';
+require_once __DIR__ . '/includes/EmailService.php';
 
 $status = '';
 $msg = '';
@@ -16,6 +17,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['membership_submit']))
     try {
         $stmt = db()->prepare("INSERT INTO memberships (full_name, email, phone, address, occupation, membership_type, status) VALUES (?, ?, ?, ?, ?, ?, 'Pending')");
         $stmt->execute([$name, $email, $phone, $address, $occupation, $type]);
+
+        // Send Confirmation to User
+        EmailService::sendUserConfirmation($email, $name, 'Membership Application');
+
+        // Send Notification to Admin
+        EmailService::sendAdminNotification('New Membership Application', [
+            'Applicant Name' => $name,
+            'Email' => $email,
+            'Phone' => $phone,
+            'Membership Type' => $type,
+            'Occupation' => $occupation
+        ], "Address: " . $address);
+
         $status = 'success';
         $msg = 'Your membership application has been submitted successfully. Our team will review it and get back to you.';
     } catch (Exception $e) {
