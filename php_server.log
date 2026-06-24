@@ -1,0 +1,16 @@
+[Wed Jun 24 17:25:59 2026] PHP 8.3.6 Development Server (http://localhost:8000) started
+[Wed Jun 24 17:26:02 2026] [::1]:32978 Accepted
+[Wed Jun 24 17:26:02 2026] [::1]:32978 [200]: GET /contact.php
+[Wed Jun 24 17:26:02 2026] [::1]:32978 Closing
+[Wed Jun 24 17:26:02 2026] [::1]:32984 Accepted
+[Wed Jun 24 17:26:02 2026] [::1]:32990 Accepted
+[Wed Jun 24 17:26:02 2026] [::1]:32984 [200]: GET /assets/css/style.css
+[Wed Jun 24 17:26:02 2026] [::1]:32990 [200]: GET /assets/images/macdef-logo.png
+[Wed Jun 24 17:26:02 2026] [::1]:32984 Closing
+[Wed Jun 24 17:26:02 2026] [::1]:32990 Closing
+[Wed Jun 24 17:26:02 2026] [::1]:32992 Accepted
+[Wed Jun 24 17:26:02 2026] [::1]:32992 [200]: GET /assets/js/main.js
+[Wed Jun 24 17:26:02 2026] [::1]:32992 Closing
+[Wed Jun 24 17:26:02 2026] [::1]:32994 Accepted
+[Wed Jun 24 17:26:02 2026] [::1]:32994 [404]: GET /assets/images/macdef-banner.jpg - No such file or directory
+[Wed Jun 24 17:26:02 2026] [::1]:32994 Closing
