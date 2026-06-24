@@ -3,6 +3,8 @@ require_once __DIR__ . '/includes/db.php';
 require_once __DIR__ . '/includes/functions.php';
 require_once __DIR__ . '/includes/EmailService.php';
 
+if(session_status() === PHP_SESSION_NONE){ session_start(); }
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!verify_csrf($_POST['csrf_token'] ?? '')) {
         header('Location: contact.php?status=error&msg=Invalid security token.#contact-form');
@@ -35,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 'Subject' => $subject
             ], $message);
 
-            header('Location: contact.php?status=success#contact-form');
+            header('Location: contact.php?status=success&msg=Your message has been sent successfully. We will get back to you soon.#contact-form');
         } catch (Exception $e) {
             header('Location: contact.php?status=error&msg=' . urlencode($e->getMessage()) . '#contact-form');
         }
@@ -45,3 +47,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 } else {
     header('Location: contact.php');
 }
+?>

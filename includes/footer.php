@@ -7,10 +7,11 @@ $footer = db()->query("SELECT * FROM footer_settings WHERE id=1")->fetch();
             <div class="col-lg-4">
 <div class="footer-logo">
     <img
+        id="macdefFooterAdminLogo"
         src="<?= e(!empty($footer['footer_logo']) ? $footer['footer_logo'] : 'assets/images/macdef-logo.png') ?>"
         alt="MACDEF Logo"
         style="cursor:pointer;"
-        ondblclick="window.location='<?= SITE_URL ?>/admin/login.php';"
+        data-admin-url="<?= SITE_URL ?>/admin/login.php"
         title="MACDEF"
     >
 </div>
@@ -81,6 +82,30 @@ $footer = db()->query("SELECT * FROM footer_settings WHERE id=1")->fetch();
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
+    // Admin Shortcut: Double-click or Mobile Double-tap
+    const adminLogo = document.getElementById('macdefFooterAdminLogo');
+    if (adminLogo) {
+        const adminUrl = adminLogo.getAttribute('data-admin-url');
+        let lastTap = 0;
+
+        // Desktop Double-click
+        adminLogo.addEventListener('dblclick', function(e) {
+            e.preventDefault();
+            window.location.href = adminUrl;
+        });
+
+        // Mobile Double-tap
+        adminLogo.addEventListener('touchend', function(e) {
+            const currentTime = new Date().getTime();
+            const tapLength = currentTime - lastTap;
+            if (tapLength < 450 && tapLength > 0) {
+                e.preventDefault();
+                window.location.href = adminUrl;
+            }
+            lastTap = currentTime;
+        });
+    }
+
     const hero = document.querySelector('#macdefHero');
     if (hero) {
         new bootstrap.Carousel(hero, {

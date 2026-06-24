@@ -65,7 +65,7 @@ $hero_subtitle = getSetting('contact_hero_subtitle', 'We would love to hear from
         <div class="row g-5">
             <!-- Section 3: Contact Form Redesign -->
             <div class="col-lg-7">
-                <div class="contact-form-card bg-white p-4 p-md-5">
+                <div class="contact-form-card bg-white p-4 p-md-5" id="contact-form">
                     <div class="mb-4">
                         <h2 class="fw-bold text-navy">Send Us a Message</h2>
                         <p class="text-muted">Our team will respond as soon as possible.</p>
