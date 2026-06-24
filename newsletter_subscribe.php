@@ -4,6 +4,11 @@ require_once __DIR__ . '/includes/functions.php';
 require_once __DIR__ . '/includes/EmailService.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (!verify_csrf($_POST['csrf_token'] ?? '')) {
+        header('Location: index.php?status=error&msg=Invalid security token.');
+        exit;
+    }
+
     $name = sanitize($_POST['name'] ?? '');
     $email = sanitize($_POST['email'] ?? '');
 

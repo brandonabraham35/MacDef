@@ -7,36 +7,46 @@ $status = '';
 $msg = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['donate_submit'])) {
-    $name = sanitize($_POST['donor_name']);
-    $email = sanitize($_POST['email']);
-    $phone = sanitize($_POST['phone']);
-    $type = sanitize($_POST['donation_type']);
-    $amount = (float)$_POST['amount'];
-    $message = sanitize($_POST['message']);
-
-    try {
-        $stmt = db()->prepare("INSERT INTO donations (donor_name, email, phone, donation_type, amount, message, status) VALUES (?, ?, ?, ?, ?, ?, 'Pending')");
-        $stmt->execute([$name, $email, $phone, $type, $amount, $message]);
-
-        $donor_id = db()->lastInsertId();
-
-        // Send Confirmation to User
-        EmailService::sendUserConfirmation($email, $name, 'Donation');
-
-        // Send Notification to Admin
-        EmailService::sendAdminNotification('New Donation Submission', [
-            'Donor Name' => $name,
-            'Email' => $email,
-            'Phone' => $phone,
-            'Donation Type' => $type,
-            'Amount' => 'UGX ' . number_format($amount, 2)
-        ], $message);
-
-        $status = 'success';
-        $msg = 'Thank you for your interest in supporting MACDEF! We have sent a confirmation email to you.';
-    } catch (Exception $e) {
+    if (!verify_csrf($_POST['csrf_token'] ?? '')) {
         $status = 'danger';
-        $msg = 'Sorry, something went wrong. Please try again later.';
+        $msg = 'Invalid security token.';
+    } else {
+        $name = sanitize($_POST['donor_name']);
+        $email = sanitize($_POST['email']);
+        $phone = sanitize($_POST['phone']);
+        $type = sanitize($_POST['donation_type']);
+        $amount = (float)$_POST['amount'];
+        $message = sanitize($_POST['message']);
+
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $status = 'danger';
+            $msg = 'Invalid email address.';
+        } else {
+            try {
+                $stmt = db()->prepare("INSERT INTO donations (donor_name, email, phone, donation_type, amount, message, status) VALUES (?, ?, ?, ?, ?, ?, 'Pending')");
+                $stmt->execute([$name, $email, $phone, $type, $amount, $message]);
+
+                $donor_id = db()->lastInsertId();
+
+                // Send Confirmation to User
+                EmailService::sendUserConfirmation($email, $name, 'Donation');
+
+                // Send Notification to Admin
+                EmailService::sendAdminNotification('New Donation Submission', [
+                    'Donor Name' => $name,
+                    'Email' => $email,
+                    'Phone' => $phone,
+                    'Donation Type' => $type,
+                    'Amount' => 'UGX ' . number_format($amount, 2)
+                ], $message);
+
+                $status = 'success';
+                $msg = 'Thank you for your interest in supporting MACDEF! We have sent a confirmation email to you.';
+            } catch (Exception $e) {
+                $status = 'danger';
+                $msg = 'Sorry, something went wrong. Please try again later.';
+            }
+        }
     }
 }
 
@@ -96,6 +106,7 @@ $methods = db()->query("SELECT * FROM donation_methods WHERE is_active=1")->fetc
                         <div class="alert alert-<?= $status ?>"><?= $msg ?></div>
                     <?php endif; ?>
                     <form method="post">
+                        <?= csrf_field() ?>
                         <div class="mb-3">
                             <label class="form-label fw-bold small text-uppercase">Full Name</label>
                             <input type="text" name="donor_name" class="form-control form-control-lg bg-light border-0" required>
