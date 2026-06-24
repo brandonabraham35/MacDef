@@ -7,34 +7,44 @@ $status = '';
 $msg = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['membership_submit'])) {
-    $name = sanitize($_POST['full_name']);
-    $email = sanitize($_POST['email']);
-    $phone = sanitize($_POST['phone']);
-    $address = sanitize($_POST['address']);
-    $occupation = sanitize($_POST['occupation']);
-    $type = sanitize($_POST['membership_type']);
-
-    try {
-        $stmt = db()->prepare("INSERT INTO memberships (full_name, email, phone, address, occupation, membership_type, status) VALUES (?, ?, ?, ?, ?, ?, 'Pending')");
-        $stmt->execute([$name, $email, $phone, $address, $occupation, $type]);
-
-        // Send Confirmation to User
-        EmailService::sendUserConfirmation($email, $name, 'Membership Application');
-
-        // Send Notification to Admin
-        EmailService::sendAdminNotification('New Membership Application', [
-            'Applicant Name' => $name,
-            'Email' => $email,
-            'Phone' => $phone,
-            'Membership Type' => $type,
-            'Occupation' => $occupation
-        ], "Address: " . $address);
-
-        $status = 'success';
-        $msg = 'Your membership application has been submitted successfully. Our team will review it and get back to you.';
-    } catch (Exception $e) {
+    if (!verify_csrf($_POST['csrf_token'] ?? '')) {
         $status = 'danger';
-        $msg = 'Sorry, we could not process your application. Please try again.';
+        $msg = 'Invalid security token.';
+    } else {
+        $name = sanitize($_POST['full_name']);
+        $email = sanitize($_POST['email']);
+        $phone = sanitize($_POST['phone']);
+        $address = sanitize($_POST['address']);
+        $occupation = sanitize($_POST['occupation']);
+        $type = sanitize($_POST['membership_type']);
+
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $status = 'danger';
+            $msg = 'Invalid email address.';
+        } else {
+            try {
+                $stmt = db()->prepare("INSERT INTO memberships (full_name, email, phone, address, occupation, membership_type, status) VALUES (?, ?, ?, ?, ?, ?, 'Pending')");
+                $stmt->execute([$name, $email, $phone, $address, $occupation, $type]);
+
+                // Send Confirmation to User
+                EmailService::sendUserConfirmation($email, $name, 'Membership Application');
+
+                // Send Notification to Admin
+                EmailService::sendAdminNotification('New Membership Application', [
+                    'Applicant Name' => $name,
+                    'Email' => $email,
+                    'Phone' => $phone,
+                    'Membership Type' => $type,
+                    'Occupation' => $occupation
+                ], "Address: " . $address);
+
+                $status = 'success';
+                $msg = 'Your membership application has been submitted successfully. Our team will review it and get back to you.';
+            } catch (Exception $e) {
+                $status = 'danger';
+                $msg = 'Sorry, we could not process your application. Please try again.';
+            }
+        }
     }
 }
 ?>
@@ -57,6 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['membership_submit']))
                     <?php endif; ?>
 
                     <form method="post">
+                        <?= csrf_field() ?>
                         <div class="row g-4">
                             <div class="col-md-12">
                                 <h5 class="fw-bold text-navy border-bottom pb-2 mb-3">Personal Information</h5>

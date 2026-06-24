@@ -79,6 +79,7 @@ $hero_subtitle = getSetting('contact_hero_subtitle', 'We would love to hear from
                     <?php endif; ?>
 
                     <form action="contact_submit.php" method="POST" class="row g-3">
+                        <?= csrf_field() ?>
                         <div class="col-md-6">
                             <div class="form-group-modern">
                                 <label class="form-label">First Name</label>

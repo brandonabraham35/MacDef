@@ -3,6 +3,13 @@ require_once __DIR__ . '/db.php';
 require_once __DIR__ . '/functions.php';
 require_once __DIR__ . '/auth.php';
 
+// Security Headers
+header("X-Frame-Options: SAMEORIGIN");
+header("X-Content-Type-Options: nosniff");
+header("X-XSS-Protection: 1; mode=block");
+header("Referrer-Policy: strict-origin-when-cross-origin");
+header("Content-Security-Policy: default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net; img-src 'self' data: " . SITE_URL . " https://www.google.com; frame-src https://www.google.com;");
+
 $site_name = getSetting('site_name', 'MACDEF');
 $site_title = getSetting('site_title', 'Ma\'di Cultural and Development Foundation');
 ?>
