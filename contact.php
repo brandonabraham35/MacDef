@@ -19,13 +19,7 @@ $hero_subtitle = getSetting('contact_hero_subtitle', 'We would love to hear from
 <section class="contact-hero section-padding bg-navy text-white position-relative overflow-hidden">
     <div class="hero-overlay"></div>
     <div class="container position-relative z-index-2 text-center">
-        <nav aria-label="breadcrumb" class="mb-4 d-flex justify-content-center">
-            <ol class="breadcrumb bg-transparent p-0 m-0">
-                <li class="breadcrumb-item"><a href="index.php" class="text-gold">Home</a></li>
-                <li class="breadcrumb-item active text-white opacity-75" aria-current="page">Contact</li>
-            </ol>
-        </nav>
-        <h1 class="display-3 fw-bold mb-3"><?= e($hero_title) ?></h1>
+                <h1 class="display-3 fw-bold mb-3"><?= e($hero_title) ?></h1>
         <p class="lead opacity-75 mx-auto" style="max-width: 800px;"><?= e($hero_subtitle) ?></p>
     </div>
 </section>
