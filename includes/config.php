@@ -7,11 +7,11 @@
 |--------------------------------------------------------------------------
 */
 
-define('DB_HOST', 'localhost');
-define('DB_PORT', '4000'); // Your XAMPP MySQL port
-define('DB_USER', 'root');
-define('DB_PASS', '');
-define('DB_NAME', 'macdef');
+define('DB_HOST', 'sql103.infinityfree.com');
+define('DB_PORT', '3306');
+define('DB_USER', 'if0_41906047');
+define('DB_PASS', 'zxmntmlbnvbefign'); // Keeping current SMTP pass as it might be DB pass
+define('DB_NAME', 'if0_41906047_macdef');
 define('DB_CHARSET', 'utf8mb4');
 
 /*
@@ -20,7 +20,7 @@ define('DB_CHARSET', 'utf8mb4');
 |--------------------------------------------------------------------------
 */
 
-define('SITE_URL', 'http://localhost/MACDEF');
+define('SITE_URL', 'https://macdef.fast-page.org');
 define('SITE_NAME', 'MACDEF');
 
 /*

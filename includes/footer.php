@@ -5,15 +5,16 @@ $footer = db()->query("SELECT * FROM footer_settings WHERE id=1")->fetch();
     <div class="container pb-5">
         <div class="row g-4">
             <div class="col-lg-4">
-<div class="footer-logo">
-    <img
-        src="<?= e(!empty($footer['footer_logo']) ? $footer['footer_logo'] : 'assets/images/macdef-logo.png') ?>"
-        alt="MACDEF Logo"
-        style="cursor:pointer;"
-        ondblclick="window.location='<?= SITE_URL ?>/admin/login.php';"
-        title="MACDEF"
-    >
-</div>
+                <div class="footer-logo">
+                    <img
+                        id="macdefFooterAdminLogo"
+                        src="<?= e(!empty($footer['footer_logo']) ? $footer['footer_logo'] : 'assets/images/macdef-logo.png') ?>"
+                        alt="MACDEF Logo"
+                        style="cursor:pointer;"
+                        data-admin-url="<?= SITE_URL ?>/admin/login.php"
+                        title="MACDEF"
+                    >
+                </div>
 
                 <p class="text-muted mb-4"><?= e($footer['footer_description'] ?? "Ma'di Cultural and Development Foundation is dedicated to preserving heritage, empowering communities, and building a prosperous future for the Ma'di people.") ?></p>
                 <div class="footer-social">
@@ -88,6 +89,28 @@ document.addEventListener('DOMContentLoaded', function () {
             ride: 'carousel',
             pause: false,
             wrap: true
+        });
+    }
+
+    // Admin Shortcut
+    const adminLogo = document.getElementById('macdefFooterAdminLogo');
+    if (adminLogo) {
+        let lastTap = 0;
+        const adminUrl = adminLogo.getAttribute('data-admin-url');
+
+        adminLogo.addEventListener('dblclick', function(e) {
+            e.preventDefault();
+            window.location.href = adminUrl;
+        });
+
+        adminLogo.addEventListener('touchend', function(e) {
+            const currentTime = new Date().getTime();
+            const tapLength = currentTime - lastTap;
+            if (tapLength < 450 && tapLength > 0) {
+                e.preventDefault();
+                window.location.href = adminUrl;
+            }
+            lastTap = currentTime;
         });
     }
 });
